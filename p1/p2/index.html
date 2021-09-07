@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>Bootstrap Theme Simply Me</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+    
+ 
+    
+<link rel="stylesheet" type="text/css" href="./css/styles.css">
+
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <span class="navbar-brand mb-0 h1">Samuel Adkins' Resume</span>
+    
+    
+    <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav navbar-right">
+      <li class="nav-item">
+        <a class="nav-link" href="#About">About me</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#Work">Work Experience</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#Education">Education</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#Recs">Recommendations</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#Favs">Favorite Things!</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#Contact">Contact</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- First Container -->
+<div class="container-fluid bg-ban text-center" id="About">
+  <h3 class="margin">Who Am I?</h3>
+  <img src="./pics/me.jpg" class="rounded-circle" style="display:inline" alt="Samuel Adkins" width="350">
+  <h3>Samuel Adkins</h3>
+</div>
+
+<!-- Second Container -->
+<div class="container-fluid bg-2 text-center">
+  <h3 class="margin">What Am I?</h3>
+  <p> At the ripe age of 25, my name is <span style="color:gold;">Samuel Adkins</span> and I am a Junior at Florida Atlantic University pursuing my Bachelor's Degree for Engineering in Computer Science. I aquired my AA in Computer Science with a 4.0 GPA, and I aim to maintain a 3.90+ GPA as I obtain my BA. Afterwards, I may seek to further my education with a Masters in AI. Although most of my time is spent in acadamia, I also spend time enjoying almost anything tech related, gaming, and enjoying the finer things in life. </p>
+</div>
+
+<!-- Third Container (Grid) -->
+<div class="container-fluid bg-3 text-center" id="Work">    
+  <h3 class="margin">Work Experience?</h3><br>
+  <div class="row">
+    <div class="col-sm-6">
+      <p>Paid Intern Annotator for Citrus Greening at Indian River State College. Responsible for analyzing and annotating computer generated models of the asain citrus psyllid. Annoated models were BLAST'ed to NCBI's database to find strong models based of previously annoated bugs. Additionally, the collective findings of annotators across several institutions were condenced into a scientific journal for publication. </p>
+        <a href="https://www.citrusgreening.org/" target="_blank"><img src="./pics/cg_logo.png" class="img-responsive margin" style="width:50%" alt="Citrus Greening Logo"></a>
+    </div>
+    <div class="col-sm-6"> 
+      <p>Head Bagger. Responsible for managing front-end bagger employees. Managed duties include, but not limited to, hiring, schedualing, maintaining a clean front-of-store and organized parking lot, and placing timely shipments of new bags.</p>
+        <a href="https://commissaries.com/shopping/store-locations/annapolis-nsa" target="_blank"><img src="./pics/commissary.jpg" class="img-responsive margin" style="width:90%" alt="Annapolis Commissary"></a>
+    </div>
+  </div>
+</div>
+
+<!-- Forth Container () for Classes -->
+<div class="container-fluid bg-2 text-center" id="Education">
+    <h3 class="margin">Current Classes</h3><br>
+       
+
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Course</th>
+                    <th scope="col">Professor</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Intro to Internet Computing</td>
+                <td>Dr. Dingding Wang</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Data Structures</td>
+                <td>Dr. Lofton Bullard, Ph.D.</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Intro to Microprocessors</td>
+                <td>Dr. Bassem Alhalabi</td>
+            </tr>
+            <tr>
+                <th scope="row">4</th>
+                <td>Internet of Things</td>
+                <td>Mohammad Ilyas</td>
+            </tr>
+            </tbody>
+        </table> 
+</div>    
+    
+ <!--- Recs -->
+<div class="container-fluid bg-1 text-center" id="Recs">
+  <h3 class="margin">Recommendations - Books</h3><br>  
+    <div class="d-flex">
+        <div class="p-2 bg-info flex-fill">
+            <a href="https://www.amazon.com/Crime-Punishment-Translation-Fyodor-Dostoevsky/dp/1631490338" target="_blank">
+            <img src="./pics/Crimeandpunishmentcover.png" class="img-fluid" alt="Crime and Punishment">
+            </a>
+        </div>
+        <div class="p-2 bg-warning flex-fill">
+            <a href="https://www.amazon.com/Enders-Ender-Quintet-Orson-Scott/dp/0812550706" target="_blank">
+            <img src="./pics/endergamecover.jpg" class="img-fluid" alt="Ender Game">
+            </a>
+        </div>
+        <div class="p-2 bg-primary flex-fill">
+            <a href="https://www.textbooks.com/Calculus-Early-Transcendental-Functions-Looseleaf-18-Edition/9781337750103/Ron-Larson-and-Bruce-Edwards.php?kpid=9781337750103N&kenshu=_k_EAIaIQobChMIpcaF2su-7gIVqfLACh35wgGjEAQYAiABEgJ51PD_BwE_k_&mcid=XKS-7564-41-119-GoogleShopping-PRIDREPLACE-291&gclid=EAIaIQobChMIpcaF2su-7gIVqfLACh35wgGjEAQYAiABEgJ51PD_BwE" target="_blank">
+            <img src="./pics/calc.jpg" class="img-fluid" alt="Calculus 3 Book">
+            </a>
+        </div>
+    </div>
+    <h3 class="margin">Recommendations - Movies</h3><br>  
+    <div class="d-flex">
+        <div class="p-2 bg-info flex-fill">
+            <a href="https://www.imdb.com/title/tt0268978/">
+            <img src="./pics/mind.jpg" class="img-fluid" alt="A Beautiful Mind">
+            </a>
+        </div>
+        <div class="p-2 bg-warning flex-fill">
+            <a href="https://www.imdb.com/title/tt0245429/" target="_blank">
+            <img src="./pics/spirited.jpg" class="img-fluid" alt="Spirited Away">
+            </a>
+        </div>
+        <div class="p-2 bg-primary flex-fill">
+            <a href="https://www.imdb.com/title/tt0756683/" target="_blank">
+            <img src="./pics/earth.jpg" class="img-fluid" alt="The Man from Earth">
+            </a>
+        </div>
+    </div>
+</div>
+    
+<!-- Favorite Things-->
+<div class="container-fluid bg-3 text-center" id="Favs">
+  <h3 class="margin" id="favs">Favorite things!</h3>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Runescape3. Player here at <a href="https://www.runescape.com" target="_blank">www.runescape.com</a></li>
+        <li class="list-group-item">Computers and Tech</li>
+        <li class="list-group-item">Cats (I have two, Xayah and Rakan)</li>
+        <li class="list-group-item">Burgers and IPAs</li>
+        <li class="list-group-item">My girlfriend</li>
+    </ul>
+</div> 
+<!-- Footer -->
+    <footer class="container-fluid bg-4 text-center">
+        <h3 style="margin">Contact</h3>
+            <p>You can reach me on
+            <a href="https://www.instagram.com/im_aweesam/" target="_blank">Instagram</a> and
+            <a href="mailto:adkinss2020@fau.edu" target="_blank">adkinss2020@fau.edu</a>
+            <p>Credit to Bootstrap templates <a href="https://www.w3schools.com">www.w3schools.com</a></p> 
+            <p><a href=#>Top of Page</a></p>
+    </footer>
+</body>
+</html>

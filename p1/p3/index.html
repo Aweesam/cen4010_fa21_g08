@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>Samuel Adkins - Project 3</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"> </script>
+  <script src="./js/stat.js"> </script>
+    
+  
+<link rel="stylesheet" type="text/css" href="./css/styles.css">
+
+</head>
+
+<body>
+
+
+<div style="background:#2f2f2f; color:#fff !important" class="jumbotron">
+  <h1>Project 3 - Statistical Analysis</h1>      
+  <p>Enter 3 numbers and hit <span style="color:#09f">Calculate</span> to find their Min, Max, Average, Median and Range.</p>
+</div>    
+    
+
+<div id="main">
+    
+    <div class="container">
+    <h2 >Input</h2>
+    <form id="numbers" >
+        
+        <div>
+        <label for="firstNumber">Number 1</label>
+        <input id="firstNumber" type="text" class="form-control mr-2">
+        </div>
+        
+        <div>
+        <label for="secondNumber">Number 2</label>
+        <input id="secondNumber" type="text" class="form-control mr-2">
+        </div>
+        
+        <div>
+        <label for="thirdNumber">Number 3</label>
+        <input id="thirdNumber" type="text" class="form-control mr-2">
+        </div> 
+ 
+        <button type="button" onclick="calculate()">Calculate</button>
+        <button type="button" onclick="formReset()" value="Reset">Clear</button>
+        
+    </form>
+        </div>
+    
+    <div class="container">
+        <h3>Output</h3>
+        <form id="output" >
+    
+        <div>   
+            <label>Min Value</label>    
+            <input type="text" id='min' readonly > <!-- do i need td -->
+        </div>
+     
+        <div>
+            <label>Max Value</label>  
+            <input type="text" id='max' readonly >
+        </div>   
+        
+        <div>
+            <label>Average Value</label>
+            <input type="text" id='avg' readonly >
+        </div>
+        
+        <div>
+            <label>Median Value</label>
+            <input type="text" id='med' readonly >
+        </div>
+    
+        <div>
+            <label>Range Value</label>
+            <input type="text" id='range' readonly >
+        </div>
+    </form>
+    </div>
+</div>
+
+
+<!-- Footer -->
+    <footer class="container-fluid bg-4 text-center">
+        <h3 class="margin">Contact</h3>
+            <p>You can reach me on
+            <a href="https://www.instagram.com/im_aweesam/" target="_blank">Instagram</a> and
+            <a href="mailto:adkinss2020@fau.edu" target="_blank">adkinss2020@fau.edu</a>
+            <p>Credit to Bootstrap templates <a href="https://www.w3schools.com">www.w3schools.com</a></p> 
+            <p><a href=#>Top of Page</a></p>
+    </footer>
+    
+</body>
+</html>

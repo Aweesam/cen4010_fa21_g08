@@ -1,0 +1,71 @@
+<style>
+html, body {
+    height: 100%;
+}
+body #tictactoe {
+    font-size: 75px;
+    font-family: 'Brush Script MT', cursive;
+    line-height: 1.8;
+    color: #2DA8D8FF;
+    
+  }
+body {
+    background-color: aqua
+}
+
+p {font-size: 30px;}
+#tictactoe {
+    font-size: 75px;
+    
+}
+.margin {
+    margin-bottom: 45px;
+}
+
+.bg-4 { 
+    background-color: #2f2f2f; /* Black Gray */
+    color: #fff;
+  }
+
+[id=tictactoe] {
+    color: #2DA8D8FF;
+    background-color: #2A2B2DFF;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+    border-top: 0;
+    
+}
+
+
+[id=winMsg]{
+    font-style: oblique;
+    font-size: 85px;
+    color:black;
+}
+
+button[type=button] {
+   width: 200px;
+   background-color: darkblue;
+   color: lightpink;
+   padding: 15px;
+   margin: 10px 0;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+}
+
+button[type=button]:hover {
+   background-color: #DBA1F1;
+    color:aquamarine;
+}
+
+footer {
+    position: relative;
+    background: #2f2f2f;
+    margin-top: 200px;
+    padding-bottom: 20px;  
+}
+
+
+</style>

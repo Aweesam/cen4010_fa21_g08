@@ -1,71 +1,115 @@
-<style>
-  
-body {
+<style > body {
     font: 20px Montserrat, sans-serif;
     line-height: 1.8;
     color: #f5f6f7;
+
 }
 
-p {font-size: 16px;}
+p {
+    font-size: 16px;
+}
 
-.margin {margin-bottom: 45px;}
+margin {
+    margin-bottom: 45px;
+}
+
+h1.shadow {
+    text-shadow: 0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black, -0.05em -0.05em black, -0.05em 0.05em black, 0.05em -0.05em black, 0.05em 0.05em black;
+}
 
 #Welcome {
     background-image: url('../pics/bannerbg.jpg');
     color: white;
-    text-shadow: cyan; 
+    text-shadow: cyan;
     min-height: 500px;
+
 
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    
+
+
 }
 
-.card-img-top{
-    height: auto;
-    width: auto;   
+.card-img-top {
+    max-height: 400px;
+    min-height: 300px;
+    object-fit: cover;
+
+
 }
 
-.card-deck{
+
+
+.card-deck {
     background-image: url('../pics/tempbg.jpg');
     padding-top: 100px;
     padding-bottom: 100px;
-    text-shadow: white;      
+    text-shadow: white;
 }
 
-.card-footer{
+.card-footer {
     text-align: center;
-    text-emphasis: bold;
-    background-color: black;
+
+    text-decoration: underline;
+    font-size: 20px;
+    font-stretch: expanded;
+    font-weight: bold;
 }
 
-.card{
-    background-image: linear-gradient(gray, cyan, purple);
+.card-footer a {
+    color: black;
+}
+
+.card-footer a:hover {
+    color: cyan;
+}
+
+.card {
+    background-image: linear-gradient(white, white, gray);
     font-family: monospace;
-    color: black; 
+    color: black;
+    width: auto;
+    height: 100%;
 }
 
 #cardSpace {
     display: flex;
+
 }
 
 .card-deck {
     display: flex;
-    justify-content:center;
+    justify-content: center;
+
 }
 
-.bg-4 { 
-    background-color: #2f2f2f; /* Black Gray */
+.card-title {
+    text-align: center;
+    font-size: 25px;
+    font-family: Georgia, serif;
+}
+
+.card-text {
+    font-size: 20px;
+    font-family: Georgia, serif;
+}
+
+.bg-4 {
+    background-color: #2f2f2f;
+    /* Black Gray */
     color: #fff;
-  }
+
+
+}
 
 .container-fluid {
-    padding-top: 70px;
-    padding-bottom: 70px;
-  }
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+}
 
 .navbar {
     padding-top: 15px;
@@ -75,10 +119,13 @@ p {font-size: 16px;}
     margin-bottom: 0;
     font-size: 12px;
     letter-spacing: 5px;
-  }
 
-.navbar-nav  li a:hover {
-    color: #1abc9c !important;
-  }
+}
 
-</style>
+.navbar-nav li a:hover {
+    color: cyan !important;
+}
+
+
+
+</style >

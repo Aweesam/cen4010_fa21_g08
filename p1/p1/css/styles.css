@@ -1,0 +1,47 @@
+<style>
+body, html{
+   height=100%; 
+   
+}
+body{
+    background-image: url("../pics/paperback.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font: 20px Arial;
+    text-shadow: white 0px 0px 10px;
+}
+
+.banner-image{
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../pics/banner.jpg");
+    height: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 300px;
+    
+}
+
+.banner-text{
+    text-align: center;
+    position: relative;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+.recs {
+    border: 5px outset black;
+    text-align:center;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    max-width: 100%;
+}
+
+
+</style>

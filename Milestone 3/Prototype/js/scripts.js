@@ -18,6 +18,7 @@ function showResult(str) {
       if (this.readyState==4 && this.status==200) {
         document.getElementById("responsivesearch").innerHTML=this.responseText;
         document.getElementById("responsivesearch").style.border="1px solid #A5ACB2";
+        console.alert("aaaa");
       }
     }
     xmlhttp.open("GET","responsivesearch.php?q="+str,true);

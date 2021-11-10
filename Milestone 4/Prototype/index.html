@@ -10,6 +10,8 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/login.css" />
+        <link rel="stylesheet" href="js/login.js" /> 
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -26,7 +28,7 @@
                     </ul>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <button type="button" class="btn btn-primary" onclick="window.location.href='Login/index.html'">Log In/Log Out</button>
+                            <button type="button" class="btn btn-primary" id="show-login">Log In</button>
                         </li>
                     </ul>
                 </div>
@@ -41,7 +43,33 @@
                 </div>
             </div>
         </header>
-        <!-- Page content-->
+        <!-- login pop-up content-->
+        <div class="popup">
+            <div class="close-btn">&times;</div>
+            <div class="form">
+                <h2>Log In</h2>
+                <div class="form-element">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" placeholder="Enter email">
+                </div>
+                <div class="form-element">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter password">
+                </div>
+                <div class="form-element">
+                    <input type="checkbox" id="remember-me">
+                    <label for="remember-me">Remember me</label>
+                </div>
+                <div class="form-element">
+                    <button>Sign in</button>
+                </div>
+                <p>Do you want to sign up? <a href="Signup/signup.html">Sign Up</a> </p>
+                <div class="form-element">
+                    <a href="#">Forgot password</a>
+                </div>
+            </div>
+        </div>
+        <!-- page content-->
         <div class="container">
             <div class="row">
                 <!-- Blog entries-->

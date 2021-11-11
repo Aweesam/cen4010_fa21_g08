@@ -28,7 +28,7 @@
                     </ul>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <button type="button" class="btn btn-primary" id="show-login">Login</button>
+                            <button type="button" class="btn btn-primary" id="loginBtn">Login</button>
                         </li>
                     </ul>
                 </div>
@@ -44,11 +44,10 @@
             </div>
         </header>
         <!-- login pop-up content-->
-        <div class="popup">
-            <!-- <div class="active">&times;</div> -->
+        <div id="myModal" class="modal">
             <script src="login.js"></script>
-            <div class="close-btn">&times;</div>
-            <div class="form">
+            <div class="modal-content form">
+                <span class="close">&times;</span>
                 <h2>Log In</h2>
                 <div class="form-element">
                     <label for="email">Email</label>
@@ -71,6 +70,7 @@
                 <div class="signup-link">Not a member? <a href="signup.html"> Signup now</a>        </div>
             </div>
         </div>
+        
         <!-- page content-->
         <div class="container">
             <div class="row">

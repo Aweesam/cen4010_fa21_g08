@@ -10,15 +10,8 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
-        <link rel="stylesheet" href="css/login.css" /> 
-        <script>
-            document.querySelector("#show-login").addEventListener("click",function() {
-            document.querySelector(".popup").classList.add("active");
-            });
-            document.querySelector("#.popup .close-btn").addEventListener("click",function() {
-            document.querySelector(".popup").classList.remove("active");
-            });
-        </script>
+        <link rel="stylesheet" href="login.css" />
+        <script src="login.js"></script> 
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -35,7 +28,7 @@
                     </ul>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <button type="button" class="btn btn-primary" id="show-login">Log In</button>
+                            <button type="button" class="btn btn-primary" id="show-login">Login</button>
                         </li>
                     </ul>
                 </div>
@@ -52,6 +45,8 @@
         </header>
         <!-- login pop-up content-->
         <div class="popup">
+            <!-- <div class="active">&times;</div> -->
+            <script src="login.js"></script>
             <div class="close-btn">&times;</div>
             <div class="form">
                 <h2>Log In</h2>
@@ -70,10 +65,10 @@
                 <div class="form-element">
                     <button>Sign in</button>
                 </div>
-                <p>Do you want to sign up? <a href="Signup/signup.html">Sign Up</a> </p>
-                <div class="form-element">
+                <div class="forgot-pass">
                     <a href="#">Forgot password</a>
                 </div>
+                <div class="signup-link">Not a member? <a href="signup.html"> Signup now</a>        </div>
             </div>
         </div>
         <!-- page content-->

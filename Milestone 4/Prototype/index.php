@@ -14,7 +14,7 @@ elseif(isset($_POST['search_text']))
     //find values in table that align with search text
     $s = sanitizeString($db, $_POST['search_text']);
     $s = '\'%'.$s.'%\'';
-     $query = 'SELECT * FROM User WHERE user_first_name LIKE '.$s.
+     $query = 'SELECT * FROM user WHERE user_first_name LIKE '.$s.
                      ' OR user_last_name LIKE '.$s.
                      ' OR user_email LIKE '.$s.
                      ' OR user_name LIKE '.$s.
@@ -26,7 +26,6 @@ elseif(isset($_POST['search_text']))
         $search_result = 'No results found';
     //results found
     else{
-        session_start();
         $search_result = ''; //reset search result
         //loop through all results and generate html output          
         while($row = $results->fetch_assoc()){   
@@ -48,7 +47,6 @@ elseif(isset($_POST['search_text']))
     
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -61,6 +59,7 @@ elseif(isset($_POST['search_text']))
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/login.css" />
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -70,20 +69,46 @@ elseif(isset($_POST['search_text']))
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#">Forum</a></li>
+                        <li class="nav-item"><a class="nav-link" href="forum/index.php">Forum</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Gallery</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Games</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Resources</a></li>
-
-                        
+                        <li class="nav-item"><a class="nav-link" href="#!">Resources</a></li>  
                     </ul>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <button type="button" class="btn btn-primary">Log In/Log Out</button></ul>/li>
+                            <button type="button" class="btn btn-primary" id="loginBtn">Login</button>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
+        <!-- login pop-up content-->
+        <div id="myModal" class="modal">
+            <div class="modal-content form">
+                <span class="close">&times;</span>
+                <h2>Log In</h2>
+                <div class="form-element">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" placeholder="Enter email">
+                </div>
+                <div class="form-element">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter password">
+                </div>
+                <div class="form-element">
+                    <input type="checkbox" id="remember-me">
+                    <label for="remember-me">Remember me</label>
+                </div>
+                <div class="form-element">
+                    <button>Sign in</button>
+                </div>
+                <div class="forgot-pass">
+                    <a href="#">Forgot password</a>
+                </div>
+                <div class="signup-link">Not a member? <a href="Signup/signup.html"> Signup now</a>        </div>
+            </div>
+        </div>
+
         <!-- Page header with logo and tagline-->
         <header class="py-5 bg-light border-bottom mb-4">
             <div class="container">
@@ -93,7 +118,8 @@ elseif(isset($_POST['search_text']))
                 </div>
             </div>
         </header>
-        <!-- Page content-->
+
+        <!-- page content-->
         <div class="container">
             <div class="row">
                 <!-- Blog entries-->
@@ -120,10 +146,10 @@ elseif(isset($_POST['search_text']))
                                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
                                     <a class="btn btn-primary" href="#!">Read more →</a>
                                 </div>
-                            </div>2
-                            <!-- Blog 2post-->
-                            <div class="card mb-4">2
-                                <a href="#2!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                            </div>
+                            <!-- Blog post-->
+                            <div class="card mb-4">
+                                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
                                 <div class="card-body">
                                     <div class="small text-muted">January 1, 2021</div>
                                     <h2 class="card-title h4">Post Title</h2>
@@ -227,10 +253,11 @@ elseif(isset($_POST['search_text']))
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p></div>
         </footer>
+        <!-- Core theme JS-->
+        <script src="js/login.js"></script> 
+        <script src="js/scripts.js"></script>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
     </body>
 </html>
 <?php $db->close();?>

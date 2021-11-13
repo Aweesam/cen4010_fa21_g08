@@ -1,3 +1,52 @@
+<?php
+
+require_once './php/db_connect.php'; //connects to the db
+require_once './php/functions.php'; //contains supplementary functions
+
+//page just opened or nothing entered in search box
+if(empty($_POST) || $_POST['search_text'] === ''){
+    $search_result = "";
+}
+
+//if search button was pressed
+elseif(isset($_POST['search_text']))
+{
+    //find values in table that align with search text
+    $s = sanitizeString($db, $_POST['search_text']);
+    $s = '\'%'.$s.'%\'';
+     $query = 'SELECT * FROM user WHERE user_first_name LIKE '.$s.
+                     ' OR user_last_name LIKE '.$s.
+                     ' OR user_email LIKE '.$s.
+                     ' OR user_name LIKE '.$s.
+                     ' OR user_color LIKE '.$s; 
+    
+    $results = $db->query($query);         
+    //no results found
+    if(mysqli_num_rows($results)==0)
+        $search_result = 'No results found';
+    //results found
+    else{
+        $search_result = ''; //reset search result
+        //loop through all results and generate html output          
+        while($row = $results->fetch_assoc()){   
+        $user_id = $row['user_id'];
+        $user_name = $row['user_name'];
+        $user_email = $row['user_email'];
+        $user_first_name = $row['user_first_name'];
+        $user_last_name = $row['user_last_name'];
+        $user_color = $row['user_color'];
+        $search_result .= "<p>Potential Match Found!<br>
+                   Username: ".$user_name."<br>
+                   Name: ".$user_first_name." ".$user_last_name."<br>
+                   Email: ".$user_email."<br>
+                   Color: ".$user_color."<br></p>";
+        }
+        //close out result set
+        $results->close();
+    }
+    
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,7 +69,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="forum/index.html">Forum</a></li>
+                        <li class="nav-item"><a class="nav-link" href="forum/index.php">Forum</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Gallery</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Games</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Resources</a></li>  
@@ -150,16 +199,20 @@
                 <div class="col-lg-4">
                     <!-- Search widget-->
                     <div class="card mb-4">
-                        <div class="card-header">Search</div>
-                        <div class="card-body">
-                            <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" onkeyup="showResult(this.value)">
-                                <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+                        <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="form-horizontal">
+                            <div class="card-header">Search</div>
+                            <div class="card-body">
+                                <div class="input-group">                                                                
+                                    <input class="form-control" name="search_text" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" onkeyup="showResult(this.value)">
+                                    <button class="btn btn-primary" name="search_button" class = "form-control" id="button-search" type="submit">Go!</button>
+                                </div>
+                                <div name="responsivesearch" id="responsivesearch">
+                                    <?php 
+                                        echo $search_result.PHP_EOL;
+                                    ?>                                
+                                </div>
                             </div>
-                            <div id="responsivesearch">
-                                <p>OUTPUT PLACEHOLDER</p>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                     <!-- Categories widget-->
                     <div class="card mb-4">
@@ -207,3 +260,4 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
+<?php $db->close();?>

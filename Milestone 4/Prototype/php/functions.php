@@ -46,4 +46,18 @@ function mysql_fix_string($connection, $string)  {
     if (get_magic_quotes_gpc()) $string = stripslashes($string);
     return $connection->real_escape_string($string);
 }
+
+function get_nav_bar($forum_name = '', $forum_id = '', $post_name = '', $post_id = '')
+{
+    $navbar = '<span>
+                    <a href="../forum/index.php">Forum Home</a> ';
+    if($forum_name != '')
+        $navbar .= '>> <a href="../forum/post.php?id='.$forum_id.'">'.$forum_name.'</a>';    
+    if($post_name != '')    
+        $navbar .= ' >> <a href="../forum/details.php?id='.$post_id.'">'.$post_name.'</a>';
+
+    $navbar .= '</span>';
+    return $navbar;
+}
+
 ?>

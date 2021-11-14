@@ -1,11 +1,8 @@
 <?php
-require_once "../php/db_connect.php";
 
-//salt phrases - to be used in the real site when we need to encrypt passwords
-//$salt1 = "^a2d";
-//$salt2 = "*1j@";
-//combine password with salt values
-//$token = hash('ripemd128',$salt1.$password.$salt2);
+//salt phrases
+$salt1 = 'awdaw#1';
+$salt2 = '!@#45';
 
 function sanitizeString($_db, $str)
 {

@@ -1,13 +1,80 @@
 <?php
+require_once "./php/db_connect.php";
+require_once "./php/functions.php";
+
 session_start();
-if(isset($_SESSION['username'])){    
+
+if(isset($_SESSION['username'])){
     $login_logout = '<a href="php/logout.php" target="_parent"><button type="button" class="btn btn-primary">Logout</button></ul></li></a>';
+    $footer = '<div class="py-4 bg-dark bottom-border">
+                    <div class="sign_up">
+                        <h1>Welcome! Logged in as: '.$_SESSION['username'].'.</h1>                        
+                    </div>
+                </div>';    
 }
 
 else
 {
     $login_logout = '<a href="Signup/signin.php" target="_parent"><button type="button" class="btn btn-primary">Login</button></ul></li></a>';
+    $footer = '<div class="py-4 bg-dark bottom-border">
+                    <div class="sign_up">
+                        <h1>Sign Up with us!</h1>
+                        <div class="form-container">
+                        <form name="register" id="register" method="post" action="'.$_SERVER['PHP_SELF'].'">
+                                <p class="sinput">
+                                    <div class="forms">
+                                        <label for="email">Enter your email address:</label>
+                                        <input type="email" name="email" id="email" placeholder="Enter valid e-mail">
+                                        <label for="firstname">Enter your first name:</label>
+                                        <input type="text" name="firstname" id="name" placeholder="First Name" required pattern="\S(.*\S)?">
+                                        <label for="lastname">Enter your last name:</label>
+                                        <input type="text" name="lastname" id="name" placeholder="Last Name" required pattern="\S(.*\S)?">
+                                        <label for="username">Enter your desired user name (can be same as email):</label>
+                                        <input type="text" name="username" id="name" placeholder="User Name" required pattern="\S(.*\S)?">              
+                                        <label for="password">Enter your password:</label>
+                                        <input type="password" name="password" id="password" placeholder="Enter Password">
+                                    </div>                                    
+                                    <input class="button" name="register" type="submit" value="Create Account">
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>';
 }
+
+if(empty($_POST))
+{
+    $alert = "";        
+}
+if(isset($_POST['register']))
+{
+    $email = mysql_entities_fix_string($db, $_POST['email']);
+    $password = mysql_entities_fix_string($db, $_POST['password']);
+    $first_name = mysql_entities_fix_string($db, $_POST['firstname']);
+    $last_name = mysql_entities_fix_string($db, $_POST['lastname']);
+    $user_name = mysql_entities_fix_string($db, $_POST['username']);
+    $token = hash('ripemd128',$salt1.$password.$salt2);
+
+    $tablecheck = 'SELECT * FROM user WHERE user_email = \'' .$email . '\'';
+    $results = $db->query($tablecheck);            
+    if($results->num_rows !=0)
+    {
+        $alert = "<div class=\"alert alert-danger text-center\">Email already registered.</div>";        
+        $results->close();
+    }
+    else
+    {
+        $alert = "";
+        $insertStmt = 'INSERT INTO user (user_id, user_name, user_email, user_first_name, user_last_name, user_password) 
+                        VALUES (NULL, \''.$user_name.'\',\''.$email.'\',\''.$first_name.'\',\''.$last_name.'\',\''.$token.'\')';
+        //echo $insertStmt;
+        $db->query($insertStmt);
+        $results->close();
+        $_SESSION['username'] = $user_name;        
+        $_SESSION['useremail'] = $email;
+        header('Location: ./index.php');        
+    }
+}   
 
 ?>
 
@@ -106,25 +173,10 @@ else
     </div>
 
     <!--Sign Up-->
-    <div class="py-4 bg-dark bottom-border">
-        <div class="sign_up">
-            <h1>Sign Up with us!</h1>
-            <div class="form-container">
-                <form action="">
-                    <p class="sinput">
-                        <div class="forms">
-                            <label for="email">Enter your email address:</label>
-                            <input type="email" name="email" id="email" placeholder="Enter valid e-mail">
-
-                            <label for="password">Enter your password:</label>
-                            <input type="password" name="password" id="password" placeholder="Enter Password">
-                        </div>
-                        <input class="button" type="button" value="Create Account">
-                    </p>
-                </form>
-            </div>
-        </div>
-    </div>
+    <?php
+        echo $footer.PHP_EOL;
+        echo $alert.PHP_EOL;
+    ?>
 
     
 </body>

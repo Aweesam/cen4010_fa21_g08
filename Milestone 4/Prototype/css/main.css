@@ -111,6 +111,10 @@ input{
     width:50%;
 }
 
+#name{
+    width:50%;
+}
+
 .forms{
     padding-bottom:3em;
 }

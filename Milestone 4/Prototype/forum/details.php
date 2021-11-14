@@ -10,6 +10,43 @@ if(!(isset($_SESSION['username'])))
   header('Location: ../index.php');  
 }
 
+elseif(isset($_POST['comment']))
+{
+    $comment = mysql_entities_fix_string($db, $_POST['comment_text']);
+    $post_id = $_SESSION['post_id'];  
+    $forum_id = $_SESSION['forum_id'];  
+    $user_id = $_SESSION['userid'];  
+    if(trim($comment) == '')
+    {
+        header('Location: '.$_SERVER['PHP_SELF'].'?id='.$post_id);    
+    }
+    else
+    {
+        $insertStmt = 'INSERT INTO reply (reply_id, forum_id, post_id, user_id, content, created_date, modified_date)
+                    VALUES (NULL, '.$forum_id.','.$post_id.','.$user_id.',\''.$comment.'\',NOW(), NOW())';
+        //echo $insertStmt;
+        $db->query($insertStmt);
+        header('Location: '.$_SERVER['PHP_SELF'].'?id='.$post_id);        
+    }
+}  
+elseif(isset($_POST['reply']))
+{    
+    $comment = mysql_entities_fix_string($db, $_POST['reply_text']);
+    $post_id = $_SESSION['post_id'];  
+    $forum_id = $_SESSION['forum_id'];  
+    $user_id = $_SESSION['userid'];
+    if(trim($comment) == '')
+    {
+        header('Location: '.$_SERVER['PHP_SELF'].'?id='.$post_id);    
+    }
+    else{
+        $insertStmt = 'INSERT INTO reply (reply_id, forum_id, post_id, user_id, content, created_date, modified_date)
+                    VALUES (NULL, '.$forum_id.','.$post_id.','.$user_id.',\''.$comment.'\',NOW(), NOW())';
+        //echo $insertStmt;
+        $db->query($insertStmt);
+        header('Location: '.$_SERVER['PHP_SELF'].'?id='.$post_id);        
+    }
+}    
 else
 {
     $login_logout = '<a href="../php/logout.php" target="_parent"><button type="button" class="btn btn-primary">Logout</button></ul></li></a>';
@@ -58,7 +95,9 @@ else
                         </div>
                     </div>';
         }
-
+        //capture session variables
+        $_SESSION['forum_id'] = $forum_id;
+        $_SESSION['post_id'] = $post_id;
         //get navbar data
         $navbar = get_nav_bar($forum_name, $forum_id, $title, $post_id);
 
@@ -67,7 +106,8 @@ else
         $query_reply = 'SELECT * 
                         FROM reply
                         JOIN user on reply.user_id = user.user_id
-                        WHERE post_id = '.$post_id;
+                        WHERE post_id = '.$post_id.'
+                        ORDER BY reply.modified_date asc';
         $results_reply = $db->query($query_reply);
         //no results found
         if(mysqli_num_rows($results_reply)==0)
@@ -173,20 +213,23 @@ else
             echo $original_post.PHP_EOL;
         ?>
         <!--Comment Area-->
-        <div class="comment-area" id="comment-area" style="display: none;">
-            <textarea name="comment" id="" placeholder="comment here ... "></textarea>
-            <input type="submit" value="submit">
-        </div>
+        <form name="comment" id="comment" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">   
+            <div class="comment-area" id="comment-area" style="display: none;">
+                <textarea name="comment_text" id="comment_text" placeholder="comment here ... " required></textarea>
+                <input type="submit" name="comment" value="submit">
+            </div>
+        </form>
         <!--Comments Section-->
         <?php
             echo $replies.PHP_EOL;
         ?>        
         <!--Reply Area-->
-        <div class="comment-area" id="reply-area" style="display: none;">
-            <textarea name="reply" id="" placeholder="reply here ... "></textarea>
-            <input type="submit" value="submit">
-        </div>
-
+        <form name="comment" id="comment" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">   
+            <div class="comment-area" id="reply-area" style="display: none;">
+                <textarea name="reply_text" id="reply_text" placeholder="reply here ... " required></textarea>
+                <input type="submit" name="reply" value="submit">
+            </div>
+        </form>
     </div>
 
     <footer>

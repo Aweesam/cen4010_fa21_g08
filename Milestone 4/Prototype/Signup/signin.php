@@ -2,10 +2,6 @@
 require_once '../php/db_connect.php';
 require_once '../php/functions.php';
 
-//salt phrases
-$salt1 = 'awdaw#1';
-$salt2 = '!@#45';
-
 session_start();
 if(empty($_POST))
 {    
@@ -30,17 +26,18 @@ if(isset($_POST['login']))
     $token = hash('ripemd128',$salt1.$password.$salt2);
     
     //check if the name is already in the table
-    $getStmt = 'SELECT user_name, user_email, user_password FROM user WHERE user_email = \'' .$user_email . '\'';
+    $getStmt = 'SELECT user_name, user_email, user_id, user_password FROM user WHERE user_email = \'' .$user_email . '\'';
     $results = $db->query($getStmt);
     
     if($results->num_rows)
     {        
         $row = $results->fetch_array(MYSQLI_NUM);
         $results->close();
-        if($token == $row[2])
+        if($token == $row[3])
         {
             $_SESSION['username'] = $row[0];
             $_SESSION['useremail'] = $row[1];
+            $_SESSION['userid'] = $row[2];
             if(isset($_POST["remember"])) 
             {
 				setcookie("member_login",$row[1],time()+ (10 * 365 * 24 * 60 * 60));

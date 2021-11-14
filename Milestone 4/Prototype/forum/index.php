@@ -5,9 +5,9 @@ require_once '../php/functions.php'; //contains supplementary functions
 
 session_start();
 
-if(!(isset($_SESSION['username']))){
-  header('Location: ../index.php');
-  
+if(!(isset($_SESSION['username'])))
+{
+  header('Location: ../index.php');  
 }
 
 else
@@ -17,7 +17,8 @@ else
   $query_header = 'SELECT * FROM forum_header';    
   $results_header = $db->query($query_header);         
   //no results found
-  if(mysqli_num_rows($results_header)==0){
+  if(mysqli_num_rows($results_header)==0)
+  {
     $output = '';
   }
   //results found
@@ -54,13 +55,11 @@ else
                       <h4><a href="post.php?id='.$forum_id.'">'.$forum_name.'</a></h4>
                       <p>'.$forum_description.'</p>
                       </div>';
-          $query_extra_data = 'SELECT count(post.post_id) + count(reply.reply_id) as posts,
-                                      count(post.post_id) as topics                                          
-                                FROM forums
-                                JOIN reply on forums.forum_id = reply.forum_id
-                                JOIN post on forums.forum_id = post.forum_id
-                                WHERE forums.forum_id = '.$forum_id;
-          ////get post counts //////
+          $query_extra_data = 'SELECT COUNT(distinct post.post_id) as topics, 
+                                      COUNT(distinct reply.reply_id) + COUNT(DISTINCT post.post_id) as posts 
+                                      FROM (SELECT DISTINCT post_id, forum_id FROM post WHERE forum_id = '.$forum_id.') post
+                                      LEFT JOIN (SELECT DISTINCT reply_id, forum_id FROM reply WHERE forum_id = '.$forum_id.') reply  on 1 = 1';
+          ////get post counts //////          
           $results_extra = $db->query($query_extra_data);
           if(mysqli_num_rows($results_extra)==0)
           {
@@ -176,7 +175,7 @@ else
     <!-- Forum Info -->
     <div class="forum-info">
       <div class="chart">
-        Covid Connections - Forum - Stats
+        Covid Connections - Forum - <?php echo $_SESSION['username']; ?>
       </div>
       <?php
         echo get_forum_stats($db);

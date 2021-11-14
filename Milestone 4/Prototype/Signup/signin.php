@@ -6,39 +6,48 @@ require_once '../php/functions.php';
 $salt1 = 'awdaw#1';
 $salt2 = '!@#45';
 
+session_start();
 if(empty($_POST))
-{
+{    
     $alert = "";
+}
+
+if(isset($_COOKIE["member_login"]) || !empty($_COOKIE["member_login"]))
+{
+    $user_email_text = 'value="'.$_COOKIE["member_login"].'"';
+}
+else
+{
+    $user_email_text = 'placeholder="Enter email"';
 }
 
 if(isset($_POST['login']))
 {
-    $username = mysql_entities_fix_string($db, $_POST['username']);
+    $user_email = mysql_entities_fix_string($db, $_POST['email']);
     $password = mysql_entities_fix_string($db, $_POST['password']);
 
     //combine password with salt values
     $token = hash('ripemd128',$salt1.$password.$salt2);
     
     //check if the name is already in the table
-    $getStmt = 'SELECT user_name, user_password FROM user WHERE user_name = \'' . $username .'\' OR user_email = \'' .$username . '\'';
+    $getStmt = 'SELECT user_name, user_email, user_password FROM user WHERE user_email = \'' .$user_email . '\'';
     $results = $db->query($getStmt);
     
-    if($results->num_rows){        
+    if($results->num_rows)
+    {        
         $row = $results->fetch_array(MYSQLI_NUM);
         $results->close();
-        if($token == $row[1]){
-            session_start();
+        if($token == $row[2])
+        {
             $_SESSION['username'] = $row[0];
-            $_SESSION['password'] = $row[1];
-            if(!empty($_POST["remember"])) {
-				setcookie ("member_login",$_POST["username"],time()+ (10 * 365 * 24 * 60 * 60));
+            $_SESSION['useremail'] = $row[1];
+            if(isset($_POST["remember"])) 
+            {
+				setcookie("member_login",$row[1],time()+ (10 * 365 * 24 * 60 * 60));
 			} 
             else 
             {
-                if(isset($_COOKIE["member_login"])) 
-                {
-					setcookie ("member_login","");
-				}
+                setcookie("member_login");				
 			}
             //$alert = "<div class=\"alert alert-success text-center\">Logged in as ".$row[1].".</div>";       
             header('Location: ../index.php');
@@ -46,33 +55,9 @@ if(isset($_POST['login']))
         else
             $alert = "<div class=\"alert alert-danger text-center\">Invalid username or password.</div>";       
     }
-    else {
+    else 
+    {
         $alert = "<div class=\"alert alert-danger text-center\">Invalid username or password.</div>";       
-    }       
-}
-
-//if register button was pressed
-elseif(isset($_POST['register']))
-{
-    $username = mysql_entities_fix_string($db, $_POST['reg_username']);
-    $password = mysql_entities_fix_string($db, $_POST['reg_password']);    
-    
-    $token = hash('ripemd128',$salt1.$password.$salt2);
-    
-    $tablecheck = 'SELECT * FROM USERS WHERE USERNAME = \'' .$username . '\'';
-    
-    $results = $db->query($tablecheck);    
-    
-    if($results->num_rows !=0){
-        //work on getting this implemented with AJAX instead so form doesn't reload.
-        $alert = "";
-        $results->close();
-    }
-    else{
-        $insertStmt = 'INSERT INTO USERS (ID, USERNAME, PASSWORD) VALUES (NULL, \''.$username.'\',\''.$token.'\')';
-        $db->query($insertStmt);
-        $alert = "<div class=\"alert alert-success text-center\">User created. Please login.</div>";
-        $results->close();
     }
 }
 ?>
@@ -95,14 +80,14 @@ elseif(isset($_POST['register']))
         <h2>Log In</h2>
         <div class="form-element">
             <label for="email">Email</label>
-            <input type="text" name="username" id="username" placeholder="Enter email/username">
+            <input type="email" name="email" id="email" <?php echo $user_email_text ?>>
         </div>
         <div class="form-element">
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" placeholder="Enter password">
+            <input type="password" name="password" id="password" placeholder="Enter password" required pattern="\S(.*\S)?">
         </div>
         <div class="form-element">
-            <input type="checkbox" id="remember">
+            <input type="checkbox" name="remember" id="remember">
             <label for="remember-me">Remember me</label>
         </div>
         <?php

@@ -1,5 +1,5 @@
 <?php
-require_once "db_connect.php";
+require_once "../php/db_connect.php";
 
 //salt phrases - to be used in the real site when we need to encrypt passwords
 //$salt1 = "^a2d";
@@ -58,6 +58,70 @@ function get_nav_bar($forum_name = '', $forum_id = '', $post_name = '', $post_id
 
     $navbar .= '</span>';
     return $navbar;
+}
+
+function get_forum_stats($db)
+{
+    ////get forum stats //////
+    $query_extra_data = 'SELECT count(distinct post.post_id) as topics,
+                                count(distinct reply.reply_id) + count(distinct post.post_id) as posts,                                
+                                count(distinct user.user_id) as members
+                         FROM (SELECT DISTINCT user_id FROM user) user
+                         JOIN (SELECT DISTINCT reply_id FROM reply) reply on 1 = 1
+                         JOIN (SELECT DISTINCT post_id FROM post) post on 1 = 1';    
+    $results_extra = $db->query($query_extra_data);
+    if(mysqli_num_rows($results_extra)==0)
+    {
+        $topics = "0";
+        $posts = "0";
+        $members = "0";
+    }
+    else
+    {
+        while($row_extra = $results_extra->fetch_assoc())
+        {
+            $topics = $row_extra['topics'];
+            $posts = $row_extra['posts'];
+            $members = $row_extra['members'];                       
+        }
+    }    
+    $output = '<span><u>'.$posts.'</u> Posts in <u>'.$topics.'</u> Topics by <u>'.$members.'</u> Members.</span><br>';
+    $results_extra->close();
+    ////get lastest post details //////
+    $query_extra_data = 'SELECT post_id,
+                                user_name,
+                                title,
+                                post.created_date
+                         FROM post
+                         JOIN user on post.user_id = user.user_id                  
+                         WHERE post.post_id = (SELECT DISTINCT post_id
+                                               FROM post
+                                               WHERE created_date = (SELECT MAX(created_date)
+                                                                     FROM post)
+                                               LIMIT 1
+                                               )';
+    $results_extra = $db->query($query_extra_data);
+    if(mysqli_num_rows($results_extra)==0)
+    {
+        $post_id = "";
+        $user_name = "";
+        $title = "";
+        $created_date = '1900-01-01';  
+    }
+    else
+    {
+        while($row_extra = $results_extra->fetch_assoc())
+        {
+            $post_id = $row_extra['post_id'];
+            $user_name = $row_extra['user_name'];
+            $title = $row_extra['title'];
+            $created_date = $row_extra['created_date'];                       
+        }
+    }
+    $created_date = date('Y-m-d', strtotime($created_date));    
+    $output .= '<span>Latest post: <b><a href="details.php?id='.$post_id.'">'.$title.'</a></b> on '.$created_date.' By <a href="">'.$user_name.'</a></span>.<br>';
+    $results_extra->close();
+    return $output;
 }
 
 ?>

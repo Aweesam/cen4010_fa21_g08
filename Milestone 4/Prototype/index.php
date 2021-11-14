@@ -1,3 +1,16 @@
+<?php
+session_start();
+if(isset($_SESSION['username'])){    
+    $login_logout = '<a href="php/logout.php" target="_parent"><button type="button" class="btn btn-primary">Logout</button></ul></li></a>';
+}
+
+else
+{
+    $login_logout = '<a href="Signup/signin.php" target="_parent"><button type="button" class="btn btn-primary">Login</button></ul></li></a>';
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,9 +39,11 @@
                     </ul>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a href="Signup/signup.html" target="_parent"><button type="button" class="btn btn-primary">Log In/Log Out</button></ul></li>
+                            <?php
+                            echo $login_logout.PHP_EOL;
+                            ?>
                         </li>
-                    </ul>
+                    </ul>                    
                 </div>
             </div>
         </nav>

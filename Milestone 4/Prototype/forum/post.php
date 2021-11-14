@@ -3,69 +3,113 @@
 require_once '../php/db_connect.php'; //connects to the db
 require_once '../php/functions.php'; //contains supplementary functions
 
-//page just opened or nothing entered in search box
-if(isset($_SESSION['signed_in']) && $_SESSION['signed_in'] == true){
-    $search_result = "";
+session_start();
+
+if(!(isset($_SESSION['username'])))
+{
+  header('Location: ../index.php');  
 }
 
-//if search button was pressed
 else
 {
-    //using the forum id passed to the URL, check for posts within this forum
-    $forum_id = $_GET['id'];
-    $query_post = 'SELECT * 
-                   FROM post
-                   JOIN forums on post.forum_id = forums.forum_id
-                   JOIN user on post.user_id = user.user_id
-                   WHERE post.forum_id = '.$forum_id;
-    $results_post = $db->query($query_post);
-    //no results found
-    if(mysqli_num_rows($results_post)==0){
-      $output = '<tr>
-                    <td>
-                    Nothing here yet
-                    </td>
-                    <td>
-                    Nothing here yet
-                    </td>
-                    <td>
-                    Nothing here yet
-                    </td>
-                </tr>';
-        //get navbar data
-        $navbar = get_nav_bar();
-    }
-    //results found
-    else
-    {        
-        $output = ''; //start post container block of html
-        //loop through all posts
-        while($row_post = $results_post->fetch_assoc())
-        {   
-            $forum_name = $row_post['forum_name'];   
-            $title = $row_post['title'];
-            $user_name = $row_post['user_name'];
-            $post_id = $row_post['post_id'];
-            $output .= '<tr>
-                            <td>
-                                <a href="details.php?id='.$post_id.'">'.$title.'</a>
-                                <br>
-                                <span>Started by <b><a href="">'.$user_name.'</a></b> .</span>
-                            </td>
-                            <td>
-                                5 replies <br> 200 views
-                            </td>
-                            <td>
-                                Apr 1 2021
-                                <br>By <b><a href="">User</a></b>
-                            </td>
-                        </tr>';
-        }
-        //get navbar data
-        $navbar = get_nav_bar($forum_name, $forum_id);
-    }
-    //close out result sets
-    $results_post->close();    
+  $login_logout = '<a href="../php/logout.php" target="_parent"><button type="button" class="btn btn-primary">Logout</button></ul></li></a>';
+  //using the forum id passed to the URL, check for posts within this forum
+  $forum_id = $_GET['id'];
+  $query_post = 'SELECT * 
+                  FROM post
+                  JOIN forums on post.forum_id = forums.forum_id
+                  JOIN user on post.user_id = user.user_id
+                  WHERE post.forum_id = '.$forum_id;
+  $results_post = $db->query($query_post);
+  //no results found
+  if(mysqli_num_rows($results_post)==0){
+    $output = '<tr>
+                  <td>
+                  Nothing here yet
+                  </td>
+                  <td>
+                  Nothing here yet
+                  </td>
+                  <td>
+                  Nothing here yet
+                  </td>
+              </tr>';
+      //get navbar data
+      $navbar = get_nav_bar();
+  }
+  //results found
+  else
+  {        
+      $output = ''; //start post container block of html
+      //loop through all posts
+      while($row_post = $results_post->fetch_assoc())
+      {   
+          $forum_name = $row_post['forum_name'];   
+          $title = $row_post['title'];
+          $user_name = $row_post['user_name'];
+          $post_id = $row_post['post_id'];
+          $output .= '<tr>
+                          <td>
+                              <a href="details.php?id='.$post_id.'">'.$title.'</a>
+                              <br>
+                              <span>Started by <b><a href="">'.$user_name.'</a></b> .</span>
+                          </td>
+                          <td>';
+          ////get reply counts //////
+          $query_extra_data = 'SELECT count(reply_id) as replies
+                                FROM reply                                  
+                                WHERE post_id = '.$post_id;
+          $results_extra = $db->query($query_extra_data);
+          if(mysqli_num_rows($results_extra)==0)
+          {
+            $replies = "0";
+          }
+          else
+          {
+            while($row_extra = $results_extra->fetch_assoc())
+            {
+              $replies = $row_extra['replies'];
+            }
+          }
+          $results_extra->close();
+          $output .= $replies.' replies <br>
+                          </td>';
+          ////get lastest reply details //////
+          $query_extra_data = 'SELECT reply.created_date,
+                                      user.user_name                                        
+                                FROM reply                                  
+                                JOIN user on reply.user_id = user.user_id                                  
+                                WHERE reply.created_date = (SELECT max(created_date)
+                                                            FROM reply
+                                                            WHERE post_id = '.$post_id.')
+                                      AND reply.post_id = '.$post_id;
+          $results_extra = $db->query($query_extra_data);
+          if(mysqli_num_rows($results_extra)==0)
+          {
+            $user_name = "No Replies Yet";
+            $created_date = '1900-01-01';              
+          }
+          else
+          {
+            while($row_extra = $results_extra->fetch_assoc())
+            {
+              $user_name = $row_extra['user_name'];
+              $created_date = $row_extra['created_date'];                
+            }
+          }
+          $created_date = date('Y-m-d', strtotime($created_date));
+          $output .= '<td>'.$created_date.'
+                      <br>By <b><a href="">'.$user_name.'</a></b>
+                      </td>
+                      </tr>';
+          $results_extra->close();
+                          
+      }
+      //get navbar data
+      $navbar = get_nav_bar($forum_name, $forum_id);
+  }
+  //close out result sets
+  $results_post->close();    
 }
 ?>
 <!DOCTYPE html>
@@ -96,7 +140,10 @@ else
             </ul>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <button type="button" class="btn btn-primary">Log In/Log Out</button></ul>/li>
+                  <?php
+                    echo $login_logout.PHP_EOL;
+                  ?>
+                </li>
             </ul>
         </div>
 </nav>

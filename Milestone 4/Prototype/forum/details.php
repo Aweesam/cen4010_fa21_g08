@@ -3,13 +3,16 @@
 require_once '../php/db_connect.php'; //connects to the db
 require_once '../php/functions.php'; //contains supplementary functions
 
-//page just opened or nothing entered in search box
-if(isset($_SESSION['signed_in']) && $_SESSION['signed_in'] == true){
-    $search_result = "";
+session_start();
+
+if(!(isset($_SESSION['username'])))
+{
+  header('Location: ../index.php');  
 }
 
 else
-{    
+{
+    $login_logout = '<a href="../php/logout.php" target="_parent"><button type="button" class="btn btn-primary">Logout</button></ul></li></a>';
     //using the post id passed to the URL, check for the post and replies
     $post_id = $_GET['id'];
     $query_post = 'SELECT * 
@@ -135,9 +138,11 @@ else
                 <li class="nav-item"><a class="nav-link" href="#!">Resources</a></li>
             </ul>
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <button type="button" class="btn btn-primary">Log In/Log Out</button>
-            </ul></li>
+            <li class="nav-item">
+                  <?php
+                    echo $login_logout.PHP_EOL;
+                  ?>
+            </li>
             </ul>
         </div>
     </nav>

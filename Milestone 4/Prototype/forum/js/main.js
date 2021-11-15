@@ -1,11 +1,21 @@
 //Comment
 function showComment(){
     var commentArea = document.getElementById("comment-area");
-    commentArea.style.display = "block";
+
+    if (commentArea.style.display == "none") {
+        commentArea.style.display = "block";
+    } else {
+        commentArea.style.display = "none";
+    }
 }
 
 //Reply
 function showReply(){
     var replyArea = document.getElementById("reply-area");
-    replyArea.style.display = "block";
+    
+    if (replyArea.style.display == "none") {
+        replyArea.style.display = "block";
+    } else {
+        replyArea.style.display = "none";
+    }
 }

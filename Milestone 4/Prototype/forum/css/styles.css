@@ -214,3 +214,31 @@ footer{
 .comment-area input:hover{
     border: solid 1px #c9f7ff;
 }
+
+/* Create New Post */
+.create-area{
+    margin-bottom:50px;
+}
+
+.create-area textarea{
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    margin-block: 10px;
+}
+
+.create-area input{
+    float: right;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.create-area input:hover{
+    border: solid 1px #c9f7ff;
+}
+
+#title_text {
+   
+    
+}

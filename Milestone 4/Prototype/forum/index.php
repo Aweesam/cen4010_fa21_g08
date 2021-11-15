@@ -167,9 +167,9 @@ else
       <input type="text" name="q" placeholder="search ...">
       <button type="button" class="btn btn-primary">Search</button>
       <!--Create a New Post-->
-      <button type="button" class="btn btn-primary" onclick="showComment()">Create New Post</button>
+      <button type="button" class="btn btn-primary" onclick="createPost()">Create New Post</button>
         <form name="create" id="createPost" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">   
-            <div class="create-area" id="comment-area" style="display: none;">
+            <div class="create-area" id="create-area" style="display: none;">
                 <input type="text"  name="title_text" id="title_text" placeholder="Title your post..." required></textarea>
                 <textarea name="discussion_text" id="discussion_text" placeholder="Create your post..." required></textarea>
                 <input type="submit" name="comment" value="submit">

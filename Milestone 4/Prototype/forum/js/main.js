@@ -20,3 +20,13 @@ function showReply(){
     }
 }
 
+//Reply
+function createPost(){
+    var replyArea = document.getElementById("create-area");
+    
+    if (replyArea.style.display == "none") {
+        replyArea.style.display = "block";
+    } else {
+        replyArea.style.display = "none";
+    }
+}

@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-  <meta charset="UTF-8">
-  <title>CodePen - Web Trivia Game</title>
-  <link href="//fonts.googleapis.com/css?family=Roboto+Mono:400,400italic,500,500italic,700,700italic|Roboto:400,400italic,500,500italic,700,700italic" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <title>CodePen - Web Trivia Game</title>
+    <link href="//fonts.googleapis.com/css?family=Roboto+Mono:400,400italic,500,500italic,700,700italic|Roboto:400,400italic,500,500italic,700,700italic" rel="stylesheet" type="text/css">
     <link type="text/css" rel="stylesheet" href="styles.css" /><link rel="stylesheet" href="./style.css">
 
 </head>
 <body>
+
 <!-- partial:index.partial.html -->
 <div id="stage">
-   <div id="container">
-     <div id="gameContainer">
+    <div id="container">
+      <div id="gameContainer">
         <div id="gameHeader">
           <div class="left questions">
             <div class="container"><span></span></div>
@@ -42,16 +43,25 @@
           </div>
         </div>
         <h1 id="title">WEB TRIVIA GAME</h1>
-     </div>
-     <button id="startButton">START</button>
-   </div>
- </div>
- <div id="modal_window">
+      </div>
+    <button id="startButton">START</button>
+    <div class="play">
+      <a href="games.html" class="back-btn">Previous Page</a>
+    </div>
+
+  
+  </div>
+</div>
+<div id="modal_window">
   <div class="modal_message">
     <p></p>
- </div>
+</div>
+
+
 <!-- partial -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/TweenMax.min.js'></script><script  src="./script.js"></script>
+
+
 
 </body>
 </html>

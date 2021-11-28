@@ -241,3 +241,24 @@ footer .disclaimer {
     font-size: 8px;
   }
 }
+.back-btn
+{
+    width: 160px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    color: #252525;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-family: calibri;
+    border-radius: 20px;
+    box-shadow: 2px 2px 30px rgba(0,0,0,0.2);
+    
+    position: absolute;
+    /* left: 50%; */
+    top: 50%;
+
+}
+

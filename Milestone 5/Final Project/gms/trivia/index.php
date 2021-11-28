@@ -46,7 +46,7 @@
       </div>
     <button id="startButton">START</button>
     <div class="play">
-      <a href="games.html" class="back-btn">Previous Page</a>
+      <a href="gms/games.html" class="back-btn">Previous Page</a>
     </div>
 
   

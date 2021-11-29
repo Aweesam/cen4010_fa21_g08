@@ -27,6 +27,9 @@
 		</div>
 	</div>
   <footer>
+	    <div class="play">
+			<a href="../games.php" class="back-btn">Previous Page</a>
+		</div>		
 		<p class="disclaimer">All logos are property of their respective owners, No Copyright infringement intended.</p>
 	</footer>
   </div><!-- End Wrap -->

@@ -29,6 +29,7 @@ elseif(isset($_POST['comment']))
         header('Location: '.$_SERVER['PHP_SELF'].'?id='.$post_id);        
     }
 }  
+
 elseif(isset($_POST['reply']))
 {    
     $comment = mysql_entities_fix_string($db, $_POST['reply_text']);
@@ -47,6 +48,29 @@ elseif(isset($_POST['reply']))
         header('Location: '.$_SERVER['PHP_SELF'].'?id='.$post_id);        
     }
 }    
+
+elseif(isset($_POST['deletepost']))
+{    
+    $post_id = $_POST['deletepost'];
+    $deleteStmt = 'DELETE FROM post WHERE post_id = '.$post_id;
+    //echo $deleteStmt;
+    $db->query($deleteStmt);
+    $deleteStmt = 'DELETE FROM reply WHERE post_id = '.$post_id;
+    //echo $deleteStmt;
+    $db->query($deleteStmt);
+    header('Location: ../forum/post.php?id='.$_SESSION['forum_id']);            
+}
+
+elseif(isset($_POST['deletereply']))
+{    
+    $reply_id = $_POST['deletereply'];
+    $post_id = $_SESSION['post_id'];
+    $deleteStmt = 'DELETE FROM reply WHERE reply_id = '.$reply_id;
+    //echo $deleteStmt;
+    $db->query($deleteStmt);
+    header('Location: '.$_SERVER['PHP_SELF'].'?id='.$post_id);            
+}
+
 else
 {
     $login_logout = '<a href="../php/logout.php" target="_parent"><button type="button" class="btn btn-primary">Logout</button></ul></li></a>';
@@ -88,15 +112,23 @@ else
                             <div>Posts: <u>36</u></div>
                         </div>
                         <div class="content">
-                           '.$content.'
-                            <div class="delete">
-                                <button onclick="deleteComment()">Delete</button>
-                            </div>  
-                           <div class="comment">
-                                <button onclick="showComment()">Comment</button>
+                           '.$content;
+            if($_SESSION['username'] == $user_name)
+            {
+                $original_post .= '
+                            <form name="deletepost" id="deletepost" method="post" action='.$_SERVER['PHP_SELF'].'>
+                            <div class="comment">                                
+                                <input name="deletepost" value="'.$post_id.'" style="display: none">
+                                <button onclick="document.getElementById["deletepost"].submit()">Delete Post</button>                                                            
                             </div>
-                        </div>
-                    </div>';
+                            </form>';
+            }  
+            
+            $original_post .= '<div class="comment">
+                                <button onclick="showComment()">Comment</button>
+                                </div>
+                                </div>
+                                </div>';
         }
         //capture session variables
         $_SESSION['forum_id'] = $forum_id;
@@ -136,8 +168,20 @@ else
                                         <div>Posts: <u>345</u></div>
                                     </div>
                                     <div class="content">
-                                        '.$content.'
-                                        <div class="comment">
+                                        '.$content;
+
+                if($_SESSION['username'] == $user_name)
+                {
+                    $replies .= '
+                                <form name="deletereply" id="deletereply" method="post" action='.$_SERVER['PHP_SELF'].'>
+                                <div class="comment">                                
+                                    <input name="deletereply" value="'.$reply_id.'" style="display: none">
+                                    <button onclick="document.getElementById["deletereply"].submit()">Delete</button>                                                            
+                                </div>
+                                </form>';
+                }  
+                
+                $replies .= '<div class="comment">
                                             <button onclick="showReply()">Reply</button>
                                         </div>
                                     </div>
@@ -198,7 +242,7 @@ else
                 <option value="Descriptions">Descriptions</option>
             </select>
             <input type="text" name="q" placeholder="search ...">
-            <button type="button" class="btn btn-primary">Search</button>
+            <button type="button" class="btn btn-primary">Search</button>            
         </div>
     </div>
 

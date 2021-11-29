@@ -11,10 +11,32 @@ if(!(isset($_SESSION['username'])))
 }
 
 else
-{
+{  
+  //if the new post button was pressed
+  if(isset($_POST['createPost']))
+  {
+      $comment = mysql_entities_fix_string($db, $_POST['discussion_text']);
+      $title = mysql_entities_fix_string($db, $_POST['title_text']); 
+      $forum_id = $_SESSION['forum_id'];
+      $user_id = $_SESSION['userid'];  
+      if(trim($comment) == '' || trim($title) == '')
+      {
+          header('Location: '.$_SERVER['PHP_SELF'].'?id='.$forum_id);    
+      }
+      else
+      {
+          $insertStmt = 'INSERT INTO post (post_id, forum_id, user_id, title, content, created_date, modified_date)
+                      VALUES (NULL, '.$forum_id.','.$user_id.',\''.$title.'\',\''.$comment.'\',NOW(), NOW())';
+          //echo $insertStmt;
+          $db->query($insertStmt);
+          header('Location: '.$_SERVER['PHP_SELF'].'?id='.$forum_id);        
+      }
+  }  
+
   $login_logout = '<a href="../php/logout.php" target="_parent"><button type="button" class="btn btn-primary">Logout</button></ul></li></a>';
   //using the forum id passed to the URL, check for posts within this forum
   $forum_id = $_GET['id'];
+  $_SESSION['forum_id'] = $forum_id;
   $query_post = 'SELECT * 
                   FROM post
                   JOIN forums on post.forum_id = forums.forum_id
@@ -39,7 +61,8 @@ else
   }
   //results found
   else
-  {        
+  {   
+         
       $output = ''; //start post container block of html
       //loop through all posts
       while($row_post = $results_post->fetch_assoc())
@@ -112,6 +135,7 @@ else
   $results_post->close();    
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -157,6 +181,14 @@ else
       </select>
       <input type="text" name="q" placeholder="search ...">
       <button type="button" class="btn btn-primary">Search</button>
+      <button type="button" class="btn btn-primary" onclick="createPost()">Create New Post</button>
+            <form name="create" id="createPost" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">   
+            <div class="create-area" id="create-area" style="display: none;">
+                <input type="text"  name="title_text" id="title_text" placeholder="Title your post..." required></textarea>
+                <textarea name="discussion_text" id="discussion_text" placeholder="Create your post..." required></textarea>
+                <input type="submit" name="createPost" value="submit">
+            </div>
+        </form>
   </div>
 </div>
 

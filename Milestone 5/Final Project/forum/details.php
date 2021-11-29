@@ -89,7 +89,10 @@ else
                         </div>
                         <div class="content">
                            '.$content.'
-                            <div class="comment">
+                            <div class="delete">
+                                <button onclick="deleteComment()">Delete</button>
+                            </div>  
+                           <div class="comment">
                                 <button onclick="showComment()">Comment</button>
                             </div>
                         </div>

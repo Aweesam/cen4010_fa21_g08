@@ -183,13 +183,16 @@ footer{
     max-height: 80px;
 }
 
-.body .content .comment button{
+.body .content .comment button,.delete button{
     border:none;
     padding:10px;
     font-weight: bolder;
     box-shadow: 4px 6px #fff;
     cursor: pointer;
     float: right;
+}
+.delete button{
+    margin-left: 15px;
 }
 
 /* comment section */

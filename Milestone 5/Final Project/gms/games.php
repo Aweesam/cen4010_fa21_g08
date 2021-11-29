@@ -61,7 +61,7 @@ else
         <li class="item-a">
             <div class="box">
                 <div class="image">
-                    <img src="img/snake.jfif" alt="snake image">
+                    <img src="img/snake.jfif" alt="snake image" width=400px height=300px>
                     <div class="play">
                         <!-- <div class="popup" id="popup-1"> -->
                             <!-- <div class="overlay"></div> -->
@@ -86,7 +86,7 @@ else
         <li class="item-b">
             <div class="box">
                 <div class="image">
-                    <img src="img/memory.jpg" alt="Memory image">
+                    <img src="img/memory.jpg" alt="Memory image" width=400px height=300px>
                     <div class="play">
                         <a href="memory/index.php" class="play-btn">Play</a>
                     </div>
@@ -104,7 +104,7 @@ else
         <li class="item-c">
             <div class="box">
                 <div class="image">
-                    <img src="img/trivia.jfif" alt="Trivia image">
+                    <img src="img/trivia.jfif" alt="Trivia image" width=400px height=300px>
                     <div class="play">
                         <a href="trivia/index.php" class="play-btn">Play</a>
                     </div>
@@ -136,7 +136,7 @@ else
         <li class="item-d">
             <div class="box">
                 <div class="image">
-                    <img src="img/hangman.png" alt="Hangman image">
+                    <img src="img/hangman.png" alt="Hangman image" width=400px height=300px>
                     <div class="play">
                         <a href="hangman/index.php" class="play-btn">Play</a>
                     </div>

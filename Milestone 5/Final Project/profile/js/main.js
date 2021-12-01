@@ -1,11 +1,7 @@
-//Comment
-function showComment(){
-    var commentArea = document.getElementById("comment-area");
-    commentArea.classList.remove("hide");
-}
+//Submit edit profile form on button press
+$('#form_submit_button').click(function(){
+    $('form').each(function(){
+        $(this).submit();
+    });
+});
 
-//Reply
-function showReply(){
-    var replyArea = document.getElementById("reply-area");
-    replyArea.classList.remove("hide");
-}

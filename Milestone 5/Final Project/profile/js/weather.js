@@ -3,6 +3,7 @@
 //Weather API KEY
 const WEATHER_API_KEY = "9be281727026afb148d17e2ddab9bf30";
 
+//The weather widget is being used instead of this code for OpenWeather API
 var doweather = function() {
     clean_buttons();
     document.getElementById('weather').classList.add("selected");

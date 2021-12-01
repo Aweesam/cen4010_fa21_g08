@@ -18,7 +18,10 @@
 <p id="gerateneBuchstaben">Wrong Letters:</p>
 <img src="http://www.writteninpencil.de/Projekte/Hangman/hangman0.png" id="hangman"><br />
 <input name="refresh" type="button" value="New Game" onClick="location.reload()">
-</form>
+</form><div class="play">
+  <a href="../games.php" class="back-btn">Previous Page</a>
+</div>
+
 <!-- partial -->
   <script  src="./script.js"></script>
 

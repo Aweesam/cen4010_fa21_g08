@@ -46,7 +46,7 @@ if(empty($_POST))
                         <li class="nav-item"><a class="nav-link" href="forum/index.php">Forum</a></li>
                         <li class="nav-item disabled"><a class="nav-link" href="#!">Gallery</a></li>
                         <li class="nav-item"><a class="nav-link" href="gms/games.php">Games</a></li>
-                        <li class="nav-item"><a class="nav-link" href="Resources/index.html">Resources</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Resources/index.php">Resources</a></li>
                     </ul>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">

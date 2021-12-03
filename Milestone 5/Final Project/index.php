@@ -160,9 +160,9 @@ if(isset($_POST['register']))
                         </td>
                         <td>
                             <a href="#">
-                                <img src="images/Gallery.jpg" alt="gallery">
+                            <img src="images/Gallery.jpg" alt="gallery">
                             </a>
-                            Gallery - Coming Soon
+                            <p>Gallery - Coming Soon</p>
                         </td>
                         <td>
                             <a href="gms/games.php">

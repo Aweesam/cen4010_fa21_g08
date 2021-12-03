@@ -5,17 +5,12 @@ require_once "../php/functions.php";
 session_start();
 
 if(isset($_SESSION['username'])){
-    $login_logout = '<a href="php/logout.php" target="_parent"><button type="button" class="btn btn-primary">Logout</button></ul></li></a>';
-    $footer = '<div class="py-4 bg-dark bottom-border">
-                    <div class="sign_up">
-                        <h1>Welcome! Logged in as: '.$_SESSION['username'].'.</h1>                        
-                    </div>
-                </div>';    
+    $login_logout = '<a href="../php/logout.php" target="_parent"><button type="button" class="btn btn-primary">Logout</button></ul></li></a>'; 
 }
 
-if(empty($_POST))
+else
 {
-    $alert = "";        
+    $login_logout = '<a href="../Signup/signin.php" target="_parent"><button type="button" class="btn btn-primary">Login</button></ul></li></a>';
 }
 ?>
 
@@ -46,7 +41,7 @@ if(empty($_POST))
                         <li class="nav-item"><a class="nav-link" href="../forum/index.php">Forum</a></li>
                         <li class="nav-item disabled"><a class="nav-link" href="#!">Gallery</a></li>
                         <li class="nav-item"><a class="nav-link" href="../gms/games.php">Games</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../Resources/index.php">Resources</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="../Resources/index.php">Resources</a></li>
                     </ul>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">

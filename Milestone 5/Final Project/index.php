@@ -111,9 +111,9 @@ if(isset($_POST['register']))
                     <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link" href="profile/index.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="forum/index.php">Forum</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Gallery</a></li>
+                        <li class="nav-item disabled"><a class="nav-link" href="#!">Gallery</a></li>
                         <li class="nav-item"><a class="nav-link" href="gms/games.php">Games</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Resources</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Resources/index.html">Resources</a></li>
                     </ul>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
@@ -162,7 +162,7 @@ if(isset($_POST['register']))
                             <a href="#">
                                 <img src="images/Gallery.jpg" alt="gallery">
                             </a>
-                            Gallery
+                            Gallery - Coming Soon
                         </td>
                         <td>
                             <a href="gms/games.php">
@@ -171,7 +171,7 @@ if(isset($_POST['register']))
                             Games
                         </td>
                         <td>
-                            <a href="#">
+                            <a href="Resources/index.html">
                                 <img src="images/Resources.jpg" alt="resources">
                             </a>
                             Resources

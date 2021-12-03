@@ -1,3 +1,25 @@
+<?php
+require_once "./php/db_connect.php";
+require_once "./php/functions.php";
+
+session_start();
+
+if(isset($_SESSION['username'])){
+    $login_logout = '<a href="php/logout.php" target="_parent"><button type="button" class="btn btn-primary">Logout</button></ul></li></a>';
+    $footer = '<div class="py-4 bg-dark bottom-border">
+                    <div class="sign_up">
+                        <h1>Welcome! Logged in as: '.$_SESSION['username'].'.</h1>                        
+                    </div>
+                </div>';    
+}
+
+if(empty($_POST))
+{
+    $alert = "";        
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,16 +42,19 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#">Forum</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Gallery</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Games</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Resources</a></li>
+                        <li class="nav-item"><a class="nav-link" href="profile/index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="forum/index.php">Forum</a></li>
+                        <li class="nav-item disabled"><a class="nav-link" href="#!">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link" href="gms/games.php">Games</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Resources/index.html">Resources</a></li>
                     </ul>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <button type="button" class="btn btn-primary">Log In/Log Out</button></ul>/li>
+                            <?php
+                            echo $login_logout.PHP_EOL;
+                            ?>
                         </li>
-                    </ul>
+                    </ul>                    
                 </div>
             </div>
         </nav>

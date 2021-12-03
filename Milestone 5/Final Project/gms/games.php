@@ -55,30 +55,6 @@ else
             </div>
         </nav>
     </div>
-    <!--Developer Game choice-->
-    <div class="box">
-                <div class="image">
-                    <img src="img/snake.jfif" alt="snake image" width=400px height=300px>
-                    <div class="play">
-                        <!-- <div class="popup" id="popup-1"> -->
-                            <!-- <div class="overlay"></div> -->
-                            <!-- <div class="content"> -->
-                                <!-- <div class="close-btn" onclick="togglePopup()">&times;</div> -->
-                                <a href="snake/index.php" class="play-btn">Play</a>
-                            <!-- </div> -->
-                        <!-- </div> -->
-                        <!-- <button onclick="togglePopup()">Play</button> -->
-                    </div>
-                </div>
-                <div class="description">
-                    <div class="type">
-                        <a href="#">Snake Game</a>
-                        <span>Developer Choice</span>
-                    </div>
-                    <!--<a href="#" class="level">LVL 5</a>   -->     
-                </div>
-            </div>    
-
     <!--Game Code-->
     <ul id="autoWidth" class="cs-hidden">
         <!--First Game-->
@@ -100,7 +76,7 @@ else
                 <div class="description">
                     <div class="type">
                         <a href="#">Snake Game</a>
-                        <!-- <span>Easy</span> -->
+                        <span>Developer Choice</span>
                     </div>
                     <!--<a href="#" class="level">LVL 5</a>   -->     
                 </div>
@@ -118,7 +94,7 @@ else
                 <div class="description">
                     <div class="type">
                         <a href="">Memory Game</a>
-                        <!-- <span>Easy</span> -->
+                        <!-- <span>Developer Choice</span>  -->
                     </div>
                     <!-- <a href="#" class="level">LVL 5</a>         -->
                 </div>
@@ -173,26 +149,25 @@ else
                     <!-- <a href="" class="level">LVL 5</a>         -->
                 </div>
             </div>    
-        </li>  
+        </li>
+        <!--fifth game-->
         <li class="item-e">
         <div class="box">
-            <div class="image">
-                <img src="img/hangman.png" alt="Hangman image" width=400px height=300px>
-                <div class="play">
-                    <a href="life/index.php" class="play-btn">Play</a>
+                <div class="image">
+                    <img src="img/life.jpeg" alt="life picture" width=400px height=300px>
+                    <div class="play">
+                        <a href="life/index.php" class="play-btn">Play</a>
+                    </div>
                 </div>
-            </div>
-            <div class="description">
-                <div class="type">
-                    <a href="">Games Of Life</a>
-                    <!-- <span>Developer Choice</span>  -->
+                <div class="description">
+                    <div class="type">
+                        <a href="life/index.php">Games Of Life</a>
+                        <!-- <span>Developer Choice</span>  -->
+                    </div>
+                    <a href="#" class="level">LVL 5</a>         
                 </div>
-                <!-- <a href="" class="level">LVL 5</a>         -->
-            </div>
-        </div>    
-
-        </li>     
-        
+            </div> 
+        </li>       
 
     </ul>
 

@@ -55,6 +55,30 @@ else
             </div>
         </nav>
     </div>
+    <!--Developer Game choice-->
+    <div class="box">
+                <div class="image">
+                    <img src="img/snake.jfif" alt="snake image" width=400px height=300px>
+                    <div class="play">
+                        <!-- <div class="popup" id="popup-1"> -->
+                            <!-- <div class="overlay"></div> -->
+                            <!-- <div class="content"> -->
+                                <!-- <div class="close-btn" onclick="togglePopup()">&times;</div> -->
+                                <a href="snake/index.php" class="play-btn">Play</a>
+                            <!-- </div> -->
+                        <!-- </div> -->
+                        <!-- <button onclick="togglePopup()">Play</button> -->
+                    </div>
+                </div>
+                <div class="description">
+                    <div class="type">
+                        <a href="#">Snake Game</a>
+                        <span>Developer Choice</span>
+                    </div>
+                    <!--<a href="#" class="level">LVL 5</a>   -->     
+                </div>
+            </div>    
+
     <!--Game Code-->
     <ul id="autoWidth" class="cs-hidden">
         <!--First Game-->
@@ -76,9 +100,9 @@ else
                 <div class="description">
                     <div class="type">
                         <a href="#">Snake Game</a>
-                        <span>Easy</span>
+                        <!-- <span>Easy</span> -->
                     </div>
-                    <a href="#" class="level">LVL 5</a>        
+                    <!--<a href="#" class="level">LVL 5</a>   -->     
                 </div>
             </div>    
         </li>
@@ -93,10 +117,10 @@ else
                 </div>
                 <div class="description">
                     <div class="type">
-                        <a href="#">Memory Game</a>
-                        <span>Easy</span>
+                        <a href="">Memory Game</a>
+                        <!-- <span>Easy</span> -->
                     </div>
-                    <a href="#" class="level">LVL 5</a>        
+                    <!-- <a href="#" class="level">LVL 5</a>         -->
                 </div>
             </div>    
         </li> 
@@ -111,7 +135,7 @@ else
                 </div>
                 <div class="description">
                     <div class="type">
-                        <a href="#">Trivia Game</a>
+                        <a href="">Trivia Game</a>
                         <!--Copyright (c) 2021 by Matt Eaton (https://codepen.io/agnosticdev/pen/ZbWjaB)
 
                         Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files 
@@ -126,9 +150,9 @@ else
                         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
                         -->
-                        <span>Easy</span>
+                        <!-- <span>Easy</span> -->
                     </div>
-                    <a href="#" class="level">LVL 5</a>        
+                    <!-- <a href="#" class="level">LVL 5</a>         -->
                 </div>
             </div>    
         </li>
@@ -143,13 +167,31 @@ else
                 </div>
                 <div class="description">
                     <div class="type">
-                        <a href="#">Hangman Game</a>
-                        <span>Easy</span>
+                        <a href="">Hangman Game</a>
+                        <!-- <span>Easy</span> -->
                     </div>
-                    <a href="#" class="level">LVL 5</a>        
+                    <!-- <a href="" class="level">LVL 5</a>         -->
                 </div>
             </div>    
-        </li>       
+        </li>  
+        <li class="item-e">
+        <div class="box">
+            <div class="image">
+                <img src="img/hangman.png" alt="Hangman image" width=400px height=300px>
+                <div class="play">
+                    <a href="life/index.php" class="play-btn">Play</a>
+                </div>
+            </div>
+            <div class="description">
+                <div class="type">
+                    <a href="">Games Of Life</a>
+                    <!-- <span>Developer Choice</span>  -->
+                </div>
+                <!-- <a href="" class="level">LVL 5</a>         -->
+            </div>
+        </div>    
+
+        </li>     
         
 
     </ul>

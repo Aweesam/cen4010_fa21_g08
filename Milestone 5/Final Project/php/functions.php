@@ -88,7 +88,8 @@ function get_forum_stats($db)
     $query_extra_data = 'SELECT post_id,
                                 user_name,
                                 title,
-                                post.created_date
+                                post.created_date,
+                                user.user_id
                          FROM post
                          JOIN user on post.user_id = user.user_id                  
                          WHERE post.post_id = (SELECT DISTINCT post_id
@@ -103,7 +104,8 @@ function get_forum_stats($db)
         $post_id = "";
         $user_name = "";
         $title = "";
-        $created_date = '1900-01-01';  
+        $created_date = '1900-01-01'; 
+        $user_id = ""; 
     }
     else
     {
@@ -113,10 +115,11 @@ function get_forum_stats($db)
             $user_name = $row_extra['user_name'];
             $title = $row_extra['title'];
             $created_date = $row_extra['created_date'];                       
+            $user_id = $row_extra['user_id'];
         }
     }
     $created_date = date('Y-m-d', strtotime($created_date));    
-    $output .= '<span>Latest post: <b><a href="details.php?id='.$post_id.'">'.$title.'</a></b> on '.$created_date.' By <a href="">'.$user_name.'</a></span>.<br>';
+    $output .= '<span>Latest post: <b><a href="details.php?id='.$post_id.'">'.$title.'</a></b> on '.$created_date.' By <a href="../profile/index.php?id='.$user_id.'">'.$user_name.'</a></span>.<br>';
     $results_extra->close();
     return $output;
 }

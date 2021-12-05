@@ -10,6 +10,11 @@ if(!(isset($_SESSION['username'])))
   header('Location: ../index.php');  
 }
 
+if(isset($_POST['search']))
+{
+  header('Location: ./post_search.php?id='.$_POST['search_text'].'&search='.$_POST['search_value']);
+}
+
 else
 {
   $login_logout = '<a href="../php/logout.php" target="_parent"><button type="button" class="btn btn-primary">Logout</button></ul></li></a>';
@@ -82,7 +87,8 @@ else
           ////get lastest post details //////
           $query_extra_data = 'SELECT post.post_id,
                                       post.created_date,
-                                      user.user_name                                        
+                                      user.user_name,
+                                      user.user_id                                        
                                 FROM forums                                  
                                 JOIN post on forums.forum_id = post.forum_id
                                 JOIN user on post.user_id = user.user_id
@@ -96,6 +102,7 @@ else
             $user_name = "";
             $created_date = '1900-01-01';
             $post_id = "";
+            $user_id = "";
           }
           else
           {
@@ -103,12 +110,13 @@ else
             {
               $user_name = $row_extra['user_name'];
               $created_date = $row_extra['created_date'];
-              $post_id = $row_extra['post_id'];                
+              $post_id = $row_extra['post_id']; 
+              $user_id = $row_extra['user_id'];
             }
           }
           $created_date = date('Y-m-d', strtotime($created_date));
           $output .= '<div class="subforum-info subforum-column">
-                      <b><a href="details.php?id='.$post_id.'">Last post</a></b> by <a href="">'.$user_name.'</a>
+                      <b><a href="details.php?id='.$post_id.'">Last post</a></b> by <a href="../profile/index.php?id='.$user_id.'">'.$user_name.'</a>
                       <br>on <small>'.$created_date.'</small>
                     </div>
                     </div>';
@@ -161,13 +169,15 @@ else
  <!--SearchBox Section-->
  <div class="search-box">
   <div>
-      <select name="" id="">
+    <form name="search" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+      <select name="search_value" id="">
           <option value="Everything">Everything</option>
           <option value="Titles">Titles</option>
-          <option value="Descriptions">Descriptions</option>
+          <option value="Content">Content</option>
       </select>
-      <input type="text" name="q" placeholder="search ...">
-      <button type="button" class="btn btn-primary">Search</button>
+      <input type="text" name="search_text" placeholder="search ...">
+      <button type="submit" name="search" class="btn btn-primary">Search</button>
+    </form>
   </div>
   
 </div>

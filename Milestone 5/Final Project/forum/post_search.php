@@ -18,48 +18,60 @@ if(isset($_POST['search']))
 else
 {  
   $profile_url = '../profile/index.php?id='.$_SESSION['userid'];
-  //if the new post button was pressed
-  if(isset($_POST['createPost']))
-  {    
-    $comment = mysql_entities_fix_string($db, $_POST['discussion_text']);
-    $title = mysql_entities_fix_string($db, $_POST['title_text']); 
-    $forum_id = $_SESSION['forum_id'];
-    $user_id = $_SESSION['userid'];  
-    if(trim($comment) == '' || trim($title) == '')
-    {
-        header('Location: '.$_SERVER['PHP_SELF'].'?id='.$forum_id);    
-    }
-    else
-    {
-        $insertStmt = 'INSERT INTO post (post_id, forum_id, user_id, title, content, created_date, modified_date)
-                    VALUES (NULL, '.$forum_id.','.$user_id.',\''.$title.'\',\''.$comment.'\',NOW(), NOW())';
-        //echo $insertStmt;
-        $db->query($insertStmt);
-        header('Location: '.$_SERVER['PHP_SELF'].'?id='.$forum_id);        
-    }
-  }  
-
   $login_logout = '<a href="../php/logout.php" target="_parent"><button type="button" class="btn btn-primary">Logout</button></ul></li></a>';
-  //using the forum id passed to the URL, check for posts within this forum
-  $forum_id = $_GET['id'];
-  $_SESSION['forum_id'] = $forum_id;
-  $query_post = 'SELECT * 
-                  FROM post
-                  JOIN forums on post.forum_id = forums.forum_id
-                  JOIN user on post.user_id = user.user_id
-                  WHERE post.forum_id = '.$forum_id;
+  //using the search text passed to the URL, check for posts within this forum
+  $search_text = $_GET['id'];
+  $search_value = $_GET['search'];
+
+  if($search_value == 'Everything')
+  {
+    $query_post = "SELECT DISTINCT post.title, user.user_name, post.post_id, user.user_id, forums.forum_name, forums.forum_id
+                    FROM post
+                    JOIN forums on post.forum_id = forums.forum_id
+                    JOIN user on post.user_id = user.user_id
+                    LEFT JOIN reply on reply.post_id = post.post_id                  
+                    WHERE post.content like '%$search_text%' 
+                          or reply.content like '%$search_text%'";
+    echo $query_post;
+  }
+
+  elseif($search_value == 'Titles')
+  {
+    $query_post = "SELECT DISTINCT post.title, user.user_name, post.post_id, user.user_id, forums.forum_name, forums.forum_id
+                    FROM post
+                    JOIN forums on post.forum_id = forums.forum_id
+                    JOIN user on post.user_id = user.user_id
+                    LEFT JOIN reply on reply.post_id = post.post_id                  
+                    WHERE post.title like '%$search_text%'";
+                          
+    echo $query_post;
+  }
+
+  elseif($search_value == 'Content')
+  {
+    $query_post = "SELECT DISTINCT post.title, user.user_name, post.post_id, user.user_id, forums.forum_name, forums.forum_id
+                    FROM post
+                    JOIN forums on post.forum_id = forums.forum_id
+                    JOIN user on post.user_id = user.user_id
+                    LEFT JOIN reply on reply.post_id = post.post_id                  
+                    WHERE post.content like '%$search_text%'
+                          or reply.content like '%$search_text%'";
+                          
+    echo $query_post;
+  }
+
   $results_post = $db->query($query_post);
   //no results found
   if(mysqli_num_rows($results_post)==0){
     $output = '<tr>
                   <td>
-                  Nothing here yet
+                  No results
                   </td>
                   <td>
-                  Nothing here yet
+                  No results
                   </td>
                   <td>
-                  Nothing here yet
+                  No results
                   </td>
               </tr>';
       //get navbar data
@@ -139,7 +151,7 @@ else
                           
       }
       //get navbar data
-      $navbar = get_nav_bar($forum_name, $forum_id);
+      $navbar = '';
   }
   //close out result sets
   $results_post->close();    

@@ -10,6 +10,11 @@ if(!(isset($_SESSION['username'])))
   header('Location: ../index.php');  
 }
 
+if(isset($_POST['search']))
+{
+  header('Location: ./post_search.php?id='.$_POST['search_text'].'&search='.$_POST['search_value']);
+}
+
 elseif(isset($_POST['comment']))
 {
     $profile_url = '../profile/index.php?id='.$_SESSION['userid'];
@@ -241,13 +246,15 @@ else
     <!--SearchBox Section-->
     <div class="search-box">
         <div>
-            <select name="" id="">
+        <form name="search" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <select name="search_value" id="">
                 <option value="Everything">Everything</option>
-                <option value="Titles">Titles</option>
-                <option value="Descriptions">Descriptions</option>
+                 <option value="Titles">Titles</option>
+                <option value="Content">Content</option>
             </select>
-            <input type="text" name="q" placeholder="search ...">
-            <button type="button" class="btn btn-primary">Search</button>            
+            <input type="text" name="search_text" placeholder="search ...">
+            <button type="submit" name="search" class="btn btn-primary">Search</button>
+        </form>          
         </div>
     </div>
 

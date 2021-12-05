@@ -30,7 +30,7 @@ else
     <script type="text/javascript" src="../gms/js/lightslider.js"></script>  
 
 </head>
-<body style="background-image: url('../images/back_image.jpeg');">
+<body style="background-image: url('img/back_image.jpeg');">
     <!--Navigation Bar-->
     <div class="holder">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">

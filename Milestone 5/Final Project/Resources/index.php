@@ -6,11 +6,13 @@ session_start();
 
 if(isset($_SESSION['username'])){
     $login_logout = '<a href="../php/logout.php" target="_parent"><button type="button" class="btn btn-primary">Logout</button></ul></li></a>'; 
+    $profile_url = '../profile/index.php?id='.$_SESSION['userid'];
 }
 
 else
 {
     $login_logout = '<a href="../Signup/signin.php" target="_parent"><button type="button" class="btn btn-primary">Login</button></ul></li></a>';
+    $profile_url = '../Signup/signin.php';
 }
 ?>
 
@@ -38,6 +40,7 @@ else
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link" href="../profile/index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?php echo $profile_url.PHP_EOL;?>">Profile</a></li>
                         <li class="nav-item"><a class="nav-link" href="../forum/index.php">Forum</a></li>
                         <li class="nav-item disabled"><a class="nav-link" href="#!">Gallery</a></li>
                         <li class="nav-item"><a class="nav-link" href="../gms/games.php">Games</a></li>

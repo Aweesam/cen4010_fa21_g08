@@ -12,25 +12,26 @@ if(!(isset($_SESSION['username'])))
 
 else
 {  
+  $profile_url = '../profile/index.php?id='.$_SESSION['userid'];
   //if the new post button was pressed
   if(isset($_POST['createPost']))
-  {
-      $comment = mysql_entities_fix_string($db, $_POST['discussion_text']);
-      $title = mysql_entities_fix_string($db, $_POST['title_text']); 
-      $forum_id = $_SESSION['forum_id'];
-      $user_id = $_SESSION['userid'];  
-      if(trim($comment) == '' || trim($title) == '')
-      {
-          header('Location: '.$_SERVER['PHP_SELF'].'?id='.$forum_id);    
-      }
-      else
-      {
-          $insertStmt = 'INSERT INTO post (post_id, forum_id, user_id, title, content, created_date, modified_date)
-                      VALUES (NULL, '.$forum_id.','.$user_id.',\''.$title.'\',\''.$comment.'\',NOW(), NOW())';
-          //echo $insertStmt;
-          $db->query($insertStmt);
-          header('Location: '.$_SERVER['PHP_SELF'].'?id='.$forum_id);        
-      }
+  {    
+    $comment = mysql_entities_fix_string($db, $_POST['discussion_text']);
+    $title = mysql_entities_fix_string($db, $_POST['title_text']); 
+    $forum_id = $_SESSION['forum_id'];
+    $user_id = $_SESSION['userid'];  
+    if(trim($comment) == '' || trim($title) == '')
+    {
+        header('Location: '.$_SERVER['PHP_SELF'].'?id='.$forum_id);    
+    }
+    else
+    {
+        $insertStmt = 'INSERT INTO post (post_id, forum_id, user_id, title, content, created_date, modified_date)
+                    VALUES (NULL, '.$forum_id.','.$user_id.',\''.$title.'\',\''.$comment.'\',NOW(), NOW())';
+        //echo $insertStmt;
+        $db->query($insertStmt);
+        header('Location: '.$_SERVER['PHP_SELF'].'?id='.$forum_id);        
+    }
   }  
 
   $login_logout = '<a href="../php/logout.php" target="_parent"><button type="button" class="btn btn-primary">Logout</button></ul></li></a>';
@@ -158,6 +159,7 @@ else
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link" href="../profile/index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?php echo $profile_url.PHP_EOL;?>">Profile</a></li>
                 <li class="nav-item active"><a class="nav-link" href="../forum/index.php">Forum</a></li>
                 <li class="nav-item disabled"><a class="nav-link" href="#!">Gallery</a></li>
                 <li class="nav-item"><a class="nav-link" href="../gms/games.php">Games</a></li>

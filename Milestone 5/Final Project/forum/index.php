@@ -13,6 +13,7 @@ if(!(isset($_SESSION['username'])))
 else
 {
   $login_logout = '<a href="../php/logout.php" target="_parent"><button type="button" class="btn btn-primary">Logout</button></ul></li></a>';
+  $profile_url = '../profile/index.php?id='.$_SESSION['userid'];
   //find values in table that align with search text
   $query_header = 'SELECT * FROM forum_header';    
   $results_header = $db->query($query_header);         
@@ -141,7 +142,8 @@ else
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link" href="../profile/index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="../index.php">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?php echo $profile_url.PHP_EOL;?>">Profile</a></li>
                 <li class="nav-item active"><a class="nav-link" href="../forum/index.php">Forum</a></li>
                 <li class="nav-item disabled"><a class="nav-link" href="#!">Gallery</a></li>
                 <li class="nav-item"><a class="nav-link" href="../gms/games.php">Games</a></li>

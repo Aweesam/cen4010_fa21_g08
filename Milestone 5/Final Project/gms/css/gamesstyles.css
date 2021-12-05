@@ -3,7 +3,7 @@ body
 {
     margin: 0px;
     padding: 0px;
-    background-image: url('../img/back_image.jpg');
+    background-color: darkgray;
 }
 
 a

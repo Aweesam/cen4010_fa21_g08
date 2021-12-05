@@ -183,6 +183,7 @@
     opacity: 0;
     filter: alpha(opacity=0);
     overflow: hidden;
+    background-image: url('../img/back_image.jpg');
 }
 
 

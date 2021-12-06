@@ -37,6 +37,9 @@ else
 <style>
     body{ 
         background-image: url('background.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
         }
 </style>
  <body>

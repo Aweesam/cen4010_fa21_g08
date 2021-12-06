@@ -194,11 +194,11 @@ if(isset($_POST['user_data']))
   </form>
       </div>      
     </div>
-      <footer style="margin-bottom:-180px" class="py-5 bg-dark" id="footer">
+</div>
+      <footer class="py-5 bg-dark" id="footer">
         <span>&copy; Boostrap 4 - FAU - Team 8</span>
       </footer>
       <script src="js/main.js"></script>
-      <script src="js/weather.js"></script>
     <script src="js/main.js"></script>
     
 </body>

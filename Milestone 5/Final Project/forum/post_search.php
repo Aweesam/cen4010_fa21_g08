@@ -32,7 +32,7 @@ else
                     LEFT JOIN reply on reply.post_id = post.post_id                  
                     WHERE post.content like '%$search_text%' 
                           or reply.content like '%$search_text%'";
-    echo $query_post;
+    //echo $query_post;
   }
 
   elseif($search_value == 'Titles')
@@ -44,7 +44,7 @@ else
                     LEFT JOIN reply on reply.post_id = post.post_id                  
                     WHERE post.title like '%$search_text%'";
                           
-    echo $query_post;
+    //echo $query_post;
   }
 
   elseif($search_value == 'Content')
@@ -57,7 +57,7 @@ else
                     WHERE post.content like '%$search_text%'
                           or reply.content like '%$search_text%'";
                           
-    echo $query_post;
+    //echo $query_post;
   }
 
   $results_post = $db->query($query_post);

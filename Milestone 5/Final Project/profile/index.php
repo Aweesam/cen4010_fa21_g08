@@ -125,7 +125,7 @@ $results_profile->close();
          <div class="row">
           <div class="col-lg-6">
             <!-- Blog post-->
-            <div class="card mb-4" id="row1">
+            <div class="card mb-4" id="row1" style="height:600px;">
               <iframe src="https://www.health.gov/myhealthfinder?widget=true" 
               name="myhealthfinderframe" 
               frameborder="0" id="myhealthfinderframe"

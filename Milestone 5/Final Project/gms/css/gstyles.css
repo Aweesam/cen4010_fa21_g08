@@ -25,6 +25,25 @@ a
     top: 50%;
     transform: translate(-50%, -50%);  */
 }
+.box-1
+{
+    width: auto;
+    height: 50px;
+    box-shadow: 2px 2px 30px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 25px 25px;
+    background-color: gray;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    
+ 
+}
+.box-1 a
+{
+    color: white;
+}
 .image
 {
     height: 450px;

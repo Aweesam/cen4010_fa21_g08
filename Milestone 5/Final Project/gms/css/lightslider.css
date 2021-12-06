@@ -184,7 +184,12 @@
     filter: alpha(opacity=0);
     overflow: hidden;
 }
-
+.cS1-hidden {
+    height: 1px;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    overflow: hidden;
+}
 
 /* vertical */
 .lSSlideOuter.vertical {

@@ -29,7 +29,9 @@ else
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Days+One" />
 
     <script type="text/javascript"src="../gms/js/JQuery.js"></script>
-    <script type="text/javascript" src="../gms/js/lightslider.js"></script>  
+    <script type="text/javascript" src="../gms/js/lightslider.js"></script>
+    <script type="text/javascript" src="../gms/js/light2.js"></script>
+
 
 </head>
 <style>
@@ -65,29 +67,31 @@ else
         </nav>
     </div>
     <!--Game Code-->
-    <div class="box">
-        <div class="image">
-            <img src="img/snake.jfif" alt="snake image" width=400px height=300px>
-            <div class="play">
-                <!-- <div class="popup" id="popup-1"> -->
-                    <!-- <div class="overlay"></div> -->
-                    <!-- <div class="content"> -->
-                        <!-- <div class="close-btn" onclick="togglePopup()">&times;</div> -->
-                        <a href="snake/index.php" class="play-btn">Play</a>
-                    <!-- </div> -->
-                <!-- </div> -->
-                <!-- <button onclick="togglePopup()">Play</button> -->
-            </div>
-        </div>
-        <div class="description">
-            <div class="type">
-                <a href="snake/index.php">Snake Game</a>
-                <span>Developer Choice</span>
-            </div>
-            <!--<a href="#" class="level">LVL 5</a>   -->     
-        </div>
-    </div>    
-        
+        <ul id="atwidth" class="cs1-hidden">
+        <li class="item-a">
+                <div class="box-1">
+                    <h1>GAMES PAGE</h1>
+                </div>
+            </li>
+
+            <li class="item-b">
+                <div class="box">
+                    <div class="image">
+                        <img src="img/snake.jfif" alt="snake image" width=400px height=300px>
+                        <div class="play">
+                            <a href="snake/index.php" class="play-btn">Play</a>
+                        </div>
+                    </div>
+                    <div class="description">
+                        <div class="type">
+                            <a href="snake/index.php">Snake Game</a>
+                            <span>Developer Choice</span>
+                        </div>
+                        <!--<a href="#" class="level">LVL 5</a>   -->     
+                    </div>
+                </div> 
+            </li>
+        </ul>   
 
     <ul id="autoWidth" class="cs-hidden">
         <!--First Game-->

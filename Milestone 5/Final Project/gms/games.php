@@ -73,7 +73,7 @@ else
         <ul id="atwidth" class="cs1-hidden">
         <li class="item-a">
                 <div class="box-1">
-                    <h1>GAMES PAGE</h1>
+                    <h1>GAMES</h1>
                 </div>
             </li>
 

@@ -195,7 +195,7 @@ if(isset($_POST['user_data']))
       </div>      
     </div>
 </div>
-      <footer class="py-5 bg-dark" id="footer">
+      <footer class="py-5 bg-dark">
         <span>&copy; Boostrap 4 - FAU - Team 8</span>
       </footer>
       <script src="js/main.js"></script>

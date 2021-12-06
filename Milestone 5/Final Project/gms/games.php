@@ -32,6 +32,13 @@ else
     <script type="text/javascript" src="../gms/js/lightslider.js"></script>  
 
 </head>
+
+<style>
+    body{ 
+        background-image: url('background.jpg');
+        }
+</style>
+
 <body>
     <!--Navigation Bar-->
     <div class="holder">
@@ -168,7 +175,7 @@ else
                         <a href="life/index.php">Games Of Life</a>
                         <!-- <span>Developer Choice</span>  -->
                     </div>
-                    <a href="#" class="level">LVL 5</a>         
+                    <!-- <a href="#" class="level">LVL 5</a>          -->
                 </div>
             </div> 
         </li>       

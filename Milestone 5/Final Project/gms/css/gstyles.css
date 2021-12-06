@@ -4,6 +4,7 @@ body
     margin: 0px;
     padding: 0px;
     background-color: grey;
+    
 }
 
 a
@@ -59,7 +60,7 @@ a
 }
 .type span
 {
-    color: rgba(26,26,26,0.5);
+    color: #222222;
 }
 .level{
     color: #333333;

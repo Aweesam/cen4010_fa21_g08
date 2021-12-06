@@ -21,10 +21,10 @@ else
 <head>
     <meta charset="utf-8">
     <title>Games tab</title>
-    <link rel="stylesheet" type="text/css" href="../gms/css/gamesstyles.css">
+    <link rel="stylesheet" type="text/css" href="../gms/css/gstyles.css">
     <link rel="stylesheet" type="text/css" href="../gms/css/lightslider.css">
     <link rel="stylesheet" type="text/css" href="../gms/css/main.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Days+One" />
 
@@ -32,14 +32,12 @@ else
     <script type="text/javascript" src="../gms/js/lightslider.js"></script>  
 
 </head>
-
 <style>
     body{ 
         background-image: url('background.jpg');
         }
 </style>
-
-<body>
+ <body>
     <!--Navigation Bar-->
     <div class="holder">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -83,7 +81,7 @@ else
         </div>
         <div class="description">
             <div class="type">
-                <a href="#">Snake Game</a>
+                <a href="snake/index.php">Snake Game</a>
                 <span>Developer Choice</span>
             </div>
             <!--<a href="#" class="level">LVL 5</a>   -->     
@@ -104,7 +102,7 @@ else
                 </div>
                 <div class="description">
                     <div class="type">
-                        <a href="">Memory Game</a>
+                        <a href="memory/index.php">Memory Game</a>
                         <!-- <span>Developer Choice</span>  -->
                     </div>
                     <!-- <a href="#" class="level">LVL 5</a>         -->
@@ -122,7 +120,7 @@ else
                 </div>
                 <div class="description">
                     <div class="type">
-                        <a href="">Trivia Game</a>
+                        <a href="trivia/index.php">Trivia Game</a>
                         <!--Copyright (c) 2021 by Matt Eaton (https://codepen.io/agnosticdev/pen/ZbWjaB)
 
                         Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files 
@@ -154,7 +152,7 @@ else
                 </div>
                 <div class="description">
                     <div class="type">
-                        <a href="">Hangman Game</a>
+                        <a href="hangman/index.php">Hangman Game</a>
                         <!-- <span>Easy</span> -->
                     </div>
                     <!-- <a href="" class="level">LVL 5</a>         -->
